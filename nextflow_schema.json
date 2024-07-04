@@ -38,7 +38,7 @@
                 }
             }
         },
-        "pointfinder_database": {
+        "database": {
             "title": "PointFinder Organism",
             "type": "object",
             "description": "The organism to use for pointfinder.",
@@ -257,18 +257,7 @@
             "$ref": "#/definitions/generic_options"
         },
         {
-            "$ref": "#/definitions/pointfinder_database"
+            "$ref": "#/definitions/database"
         }
-    ],
-    "properties": {
-        "pointfinder_database": {
-            "type": "string"
-        },
-        "plasmidfinder_database": {
-            "type": "string"
-        },
-        "mlst_scheme": {
-            "type": "string"
-        }
-    }
+    ]
 }

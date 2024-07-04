@@ -38,6 +38,18 @@
                 }
             }
         },
+        "pointfinder_database": {
+            "title": "PointFinder Organism",
+            "type": "object",
+            "description": "The organism to use for pointfinder.",
+            "fa_icon": "fas fa-terminal",
+            "properties": {
+                "pointfinder_database": {
+                    "enum" :  ["","Enterococcus faecium", "Enterococcus faecalis", "Helicobacter pylori", "Salmonella", "Campylobacter", "Escherichia coli"],
+                    "description": "The organism to use for pointfinder. Validated: Enterococcus faecium, Enterococcus faecalis, Helicobacter pylori, Salmonella, Campylobacter, Escherichia coli"
+                }
+            }
+        },
         "reference_genome_options": {
             "title": "Reference genome options",
             "type": "object",
@@ -243,6 +255,9 @@
         },
         {
             "$ref": "#/definitions/generic_options"
+        },
+        {
+            "$ref": "#/definitions/pointfinder_database"
         }
     ],
     "properties": {

@@ -39,14 +39,42 @@
             }
         },
         "database": {
-            "title": "PointFinder Organism",
+            "title": "Databases",
             "type": "object",
-            "description": "The organism to use for pointfinder.",
+            "description": "Select databases to be run on all samples.",
             "fa_icon": "fas fa-terminal",
             "properties": {
                 "pointfinder_database": {
-                    "enum" :  ["","Enterococcus faecium", "Enterococcus faecalis", "Helicobacter pylori", "Salmonella", "Campylobacter", "Escherichia coli"],
+                    "enum": [
+                        "",
+                        "Enterococcus faecium",
+                        "Enterococcus faecalis",
+                        "Helicobacter pylori",
+                        "Salmonella",
+                        "Campylobacter",
+                        "Escherichia coli"
+                    ],
                     "description": "The organism to use for pointfinder. Validated: Enterococcus faecium, Enterococcus faecalis, Helicobacter pylori, Salmonella, Campylobacter, Escherichia coli"
+                },
+                "plasmidfinder_database": {
+                    "enum": ["", "gram_positive", "enterobacteriales"],
+                    "description": "The database type to use for plasmidfinder {gram_positive, enterobacteriales}. Defaults to using all available database types to search for plasmids. [None]."
+                },
+                "mlst_scheme": {
+                    "type": "string",
+                    "description": "Specify scheme name, visit https://github.com/tseemann/mlst/tree/master/db/pubmlst for supported scheme genera available. [None]"
+                }
+            }
+        },
+        "additional_settings": {
+            "title": "Additional Settings",
+            "type": "object",
+            "description": "For advanced changes to staramr",
+            "default": "",
+            "properties": {
+                "minimum_contig_length": {
+                    "type": "string",
+                    "description": "The minimum contig length for the quality metrics. Defaults to 300 bp."
                 }
             }
         },
@@ -245,6 +273,12 @@
             "$ref": "#/definitions/input_output_options"
         },
         {
+            "$ref": "#/definitions/database"
+        },
+        {
+            "$ref": "#/definitions/additional_settings"
+        },
+        {
             "$ref": "#/definitions/reference_genome_options"
         },
         {
@@ -255,9 +289,6 @@
         },
         {
             "$ref": "#/definitions/generic_options"
-        },
-        {
-            "$ref": "#/definitions/database"
         }
     ]
 }

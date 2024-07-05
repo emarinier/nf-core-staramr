@@ -70,10 +70,9 @@
             "title": "Additional Settings",
             "type": "object",
             "description": "For advanced changes to staramr",
-            "default": "",
             "properties": {
                 "minimum_contig_length": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "The minimum contig length for the quality metrics. Defaults to 300 bp."
                 }
             }

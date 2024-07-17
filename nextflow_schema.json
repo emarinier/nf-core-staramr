@@ -58,7 +58,7 @@
                 },
                 "plasmidfinder_database": {
                     "enum": ["All", "gram_positive", "enterobacteriales"],
-                    "description": "The database type to use for plasmidfinder {gram_positive, enterobacteriales}. Defaults to using all available database types to search for plasmids. [None]."
+                    "description": "The database type to use for plasmidfinder {gram_positive, enterobacteriales}. Defaults to using all available database types to search for plasmids. [All]."
                 },
                 "mlst_scheme": {
                     "type": "string",

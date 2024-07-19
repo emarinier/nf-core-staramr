@@ -45,6 +45,7 @@
             "fa_icon": "fas fa-terminal",
             "properties": {
                 "pointfinder_database": {
+                    "type": "string",
                     "enum": [
                         "Automatic Selection",
                         "Enterococcus faecium",
@@ -57,6 +58,7 @@
                     "description": "Select a single Pointfinder database to use on all samples (overriding metadata option). Validated Organisms: Enterococcus faecium, Enterococcus faecalis, Helicobacter pylori, Salmonella, Campylobacter, Escherichia coli"
                 },
                 "plasmidfinder_database": {
+                    "type": "string",
                     "enum": ["All", "gram_positive", "enterobacteriales"],
                     "description": "The database type to use for plasmidfinder {gram_positive, enterobacteriales}. Defaults to using all available database types to search for plasmids. [All]."
                 },
@@ -76,29 +78,25 @@
                     "type": "integer",
                     "description": "The lower bound for our genome size for the quality metrics [Default 4000000]",
                     "default": 4000000,
-                    "minimum": 1,
-                    "maximum": 14000000
+                    "minimum": 1
                 },
                 "genome_size_upper_bound": {
                     "type": "integer",
                     "description": "The upper bound for our genome size for the quality metrics [Default 6000000].",
                     "default": 6000000,
-                    "minimum": 1,
-                    "maximum": 14000000
+                    "minimum": 1
                 },
                 "minimum_N50_value": {
                     "type": "integer",
                     "description": "The minimum N50 value for the quality metrics [Defaults 10000]",
                     "default": 10000,
-                    "minimum": 1,
-                    "maximum": 14000000
+                    "minimum": 1
                 },
                 "minimum_contig_length": {
                     "type": "integer",
                     "description": "The minimum contig length for the quality metrics [Default 300 bp]",
                     "default": 300,
-                    "minimum": 1,
-                    "maximum": 14000000
+                    "minimum": 1
                 },
                 "unacceptable_number_contigs": {
                     "type": "integer",

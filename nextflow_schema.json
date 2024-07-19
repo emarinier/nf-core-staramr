@@ -75,47 +75,66 @@
                 "genome_size_lower_bound": {
                     "type": "integer",
                     "description": "The lower bound for our genome size for the quality metrics [Default 4000000]",
-                    "default": 4000000
+                    "default": 4000000,
+                    "minimum": 1,
+                    "maximum" : 14000000
                 },
                 "genome_size_upper_bound": {
                     "type": "integer",
                     "description": "The upper bound for our genome size for the quality metrics [Default 6000000].",
-                    "default": 6000000
+                    "default": 6000000,
+                    "minimum": 1,
+                    "maximum" : 14000000
                 },
                 "minimum_N50_value": {
                     "type": "integer",
                     "description": "The minimum N50 value for the quality metrics [Defaults 10000]",
-                    "default": 10000
+                    "default": 10000,
+                    "minimum": 1,
+                    "maximum" : 14000000
+
                 },
                 "minimum_contig_length": {
                     "type": "integer",
                     "description": "The minimum contig length for the quality metrics [Default 300 bp]",
-                    "default": 300
+                    "default": 300,
+                    "minimum": 1,
+                    "maximum" : 14000000
                 },
                 "unacceptable_number_contigs": {
                     "type": "integer",
                     "description": "The minimum, unacceptable number of contigs which are equal to or above the minimum contig length for our quality metrics [Default 1000]",
-                    "default": 1000
+                    "default": 1000,
+                    "minimum": 1,
+                    "maximum" : 500000
                 },
                 "pid_threshold": {
                     "type": "integer",
                     "description": "BLAST percent identity threshold [Default 98]",
-                    "default": 98
+                    "default": 98,
+                    "minimum": 1,
+                    "maximum" : 100
                 },
                 "percent_length_overlap_plasmidfinder": {
                     "type": "integer",
                     "description": "The percent length overlap for resfinder results [Default 60.0]",
-                    "default": 60
+                    "default": 60,
+                    "minimum": 1,
+                    "maximum" : 100
                 },
                 "percent_length_overlap_resfinder": {
                     "type": "integer",
                     "description": "The percent length overlap for resfinder results [Default 60.0]",
-                    "default": 60
+                    "default": 60,
+                    "minimum": 1,
+                    "maximum" : 100
                 },
                 "percent_length_overlap_pointfinder": {
                     "type": "integer",
                     "description": "The percent length overlap for pointfinder results [Default 95.0]",
-                    "default": 95
+                    "default": 95,
+                    "minimum": 1,
+                    "maximum" : 100
                 },
                 "no_exclude_genes": {
                     "type": "boolean",

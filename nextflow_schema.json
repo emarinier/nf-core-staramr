@@ -63,7 +63,7 @@
                 "mlst_scheme": {
                     "type": "string",
                     "description": "Specify scheme name, visit https://github.com/tseemann/mlst/tree/master/db/pubmlst for supported scheme genera available. [None]",
-                    "default": "None"
+                    "default": "Automatic"
                 }
             }
         },

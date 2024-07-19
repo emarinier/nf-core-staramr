@@ -9,6 +9,7 @@ nextflow_pipeline {
             params {
                 input = "$baseDir/tests/assets/test_samplesheet.csv"
                 outdir = "$baseDir/tests/results"
+                max_memory = "4.GB"
             }
         }
 

@@ -114,7 +114,7 @@
                 },
                 "percent_length_overlap_plasmidfinder": {
                     "type": "integer",
-                    "description": "The percent length overlap for resfinder results [Default 60.0]",
+                    "description": "The percent length overlap for plasmidfinder results [Default 60.0]",
                     "default": 60,
                     "minimum": 1,
                     "maximum": 100

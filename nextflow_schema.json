@@ -64,7 +64,7 @@
                 },
                 "mlst_scheme": {
                     "type": "string",
-                    "description": "Specify scheme name, visit https://github.com/tseemann/mlst/tree/master/db/pubmlst for supported scheme genera available. [None]",
+                    "description": "Specify scheme name, visit https://github.com/tseemann/mlst/tree/master/db/pubmlst for supported scheme genera available. [Automatic]",
                     "default": "Automatic"
                 }
             }
@@ -102,8 +102,7 @@
                     "type": "integer",
                     "description": "The minimum, unacceptable number of contigs which are equal to or above the minimum contig length for our quality metrics [Default 1000]",
                     "default": 1000,
-                    "minimum": 1,
-                    "maximum": 500000
+                    "minimum": 1
                 },
                 "pid_threshold": {
                     "type": "integer",
@@ -114,21 +113,21 @@
                 },
                 "percent_length_overlap_plasmidfinder": {
                     "type": "integer",
-                    "description": "The percent length overlap for plasmidfinder results [Default 60.0]",
+                    "description": "The percent length overlap for plasmidfinder results [Default 60]",
                     "default": 60,
                     "minimum": 1,
                     "maximum": 100
                 },
                 "percent_length_overlap_resfinder": {
                     "type": "integer",
-                    "description": "The percent length overlap for resfinder results [Default 60.0]",
+                    "description": "The percent length overlap for resfinder results [Default 60]",
                     "default": 60,
                     "minimum": 1,
                     "maximum": 100
                 },
                 "percent_length_overlap_pointfinder": {
                     "type": "integer",
-                    "description": "The percent length overlap for pointfinder results [Default 95.0]",
+                    "description": "The percent length overlap for pointfinder results [Default 95]",
                     "default": 95,
                     "minimum": 1,
                     "maximum": 100
@@ -139,7 +138,7 @@
                 },
                 "exclude_negatives": {
                     "type": "boolean",
-                    "description": "Exclude negative results (those susceptible to antimicrobials) [DefaultFalse]"
+                    "description": "Exclude negative results (those susceptible to antimicrobials) [Default False]"
                 },
                 "exclude_resistance_phenotypes": {
                     "type": "boolean",

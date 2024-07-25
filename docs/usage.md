@@ -6,7 +6,7 @@ This is the [nf-core](https://nf-co.re/)-based pipeline for [StarAMR](https://gi
 
 ## Samplesheet input
 
-You will need to create a samplesheet with information about the samples you would like to analyze before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 2 columns, and a header row as shown in the examples below.
+You will need to create a samplesheet with information about the samples you would like to analyze before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 2-3 columns, and a header row as shown in the examples below.
 
 ```bash
 --input '[path to samplesheet file]'
@@ -25,15 +25,15 @@ SAMPLE2,sample2fastq.gz,Escherichia coli
 SAMPLE3,sample3.fastq.gz,
 ```
 
-| Column    | Description                                                                                                                |
-| --------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `sample`  | Custom sample name. Samples should be unique within a samplesheet. **Required**                                            |
-| `contigs` | Full path to genome contig(s). Uncompressed or gzipped (.gz) fasta file (fna,fa,fasta). **Required**                       |
-| `species` | Species of genome (see accepted Pointfinder organisms below). **Optional**                                                 |
+| Column    | Description                                                                                          |
+| --------- | ---------------------------------------------------------------------------------------------------- |
+| `sample`  | Custom sample name. Samples should be unique within a samplesheet. **Required**                      |
+| `contigs` | Full path to genome contig(s). Uncompressed or gzipped (.gz) fasta file (fna,fa,fasta). **Required** |
+| `species` | Species of genome (see accepted Pointfinder organisms below). **Optional**                           |
 
 An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline.
 
-Note: Validated Pointfinder organisms for `species` include: Enterococcus faecalis, Helicobacter pylori, Salmonella, Enterococcus faecium, Escherichia coli, Campylobacter. Accepted but unvalidated species: Klebsiella, Staphylococcus_aureus, Mycobacterium tuberculosis, Neisseria gonorrhoeae, Plasmodium falciparum.
+Note: Validated Pointfinder organisms for `species` include: Enterococcus faecalis, Helicobacter pylori, Salmonella, Enterococcus faecium, Escherichia coli, Campylobacter. Accepted but unvalidated species: Klebsiella, Staphylococcus aureus, Mycobacterium tuberculosis, Neisseria gonorrhoeae, Plasmodium falciparum.
 
 ## Running the pipeline
 
@@ -99,9 +99,7 @@ If you wish to share such profile (such as upload as supplementary material for 
 
 ## Core Nextflow arguments
 
-:::note
 These options are part of Nextflow and use a _single_ hyphen (pipeline parameters use a double-hyphen).
-:::
 
 ### `-profile`
 

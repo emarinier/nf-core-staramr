@@ -4,13 +4,15 @@
 
 This document describes the output produced by the pipeline.
 
-The directories listed below will be created in the results directory after the pipeline has finished. All paths are relative to the top-level results directory.
+The directories listed below will be created in the `<OUTDIR>` directory after the pipeline has finished. All paths are relative to the top-level results directory.
+
 ```
 .
 ├── csvtk
 ├── pipeline_info
 └── staramr
 ```
+
 The IRIDA Next-compliant JSON output file will be named `iridanext.output.json.gz` and will be written to the top-level of the results directory. This file is compressed using GZIP and conforms to the [IRIDA Next JSON output specifications](https://github.com/phac-nml/pipeline-standards#42-irida-next-json).
 
 ## Pipeline overview

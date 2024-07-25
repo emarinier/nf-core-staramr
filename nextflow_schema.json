@@ -38,26 +38,262 @@
                 }
             }
         },
-        "reference_genome_options": {
-            "title": "Reference genome options",
+        "database": {
+            "title": "Databases",
             "type": "object",
-            "fa_icon": "fas fa-dna",
-            "description": "Reference genome related files and options required for the workflow.",
+            "description": "Select databases to be run on all samples.",
+            "fa_icon": "fas fa-terminal",
             "properties": {
-                "genome": {
+                "pointfinder_database": {
                     "type": "string",
-                    "description": "Name of iGenomes reference.",
-                    "fa_icon": "fas fa-book",
-                    "help_text": "If using a reference genome configured in the pipeline using iGenomes, use this parameter to give the ID for the reference. This is then used to build the full paths for all required reference genome files e.g. `--genome GRCh38`. \n\nSee the [nf-core website docs](https://nf-co.re/usage/reference_genomes) for more details."
+                    "enum": [
+                        "Automatic Selection",
+                        "Enterococcus faecium",
+                        "Enterococcus faecalis",
+                        "Helicobacter pylori",
+                        "Salmonella",
+                        "Campylobacter",
+                        "Escherichia coli"
+                    ],
+                    "description": "Select a single Pointfinder database to use on all samples (overriding metadata option). Validated Organisms: Enterococcus faecium, Enterococcus faecalis, Helicobacter pylori, Salmonella, Campylobacter, Escherichia coli"
                 },
-                "igenomes_ignore": {
-                    "type": "boolean",
-                    "description": "Do not load the iGenomes reference config.",
-                    "fa_icon": "fas fa-ban",
-                    "hidden": true,
-                    "help_text": "Do not load `igenomes.config` when running the pipeline. You may choose this option if you observe clashes between custom parameters and those supplied in `igenomes.config`."
+                "plasmidfinder_database": {
+                    "type": "string",
+                    "enum": ["All", "gram_positive", "enterobacteriales"],
+                    "description": "The database type to use for plasmidfinder {gram_positive, enterobacteriales}. Defaults to using all available database types to search for plasmids. [All]."
+                },
+                "mlst_scheme": {
+                    "type": "string",
+                    "enum": [
+                        "Automatic",
+                        "aactinomycetemcomitans",
+                        "abaumannii",
+                        "abaumannii_2",
+                        "achromobacter",
+                        "aeromonas",
+                        "aphagocytophilum",
+                        "arcobacter",
+                        "bbacilliformis",
+                        "bcc",
+                        "bcereus",
+                        "bfragilis",
+                        "bhenselae",
+                        "blicheniformis_14",
+                        "bordetella_3",
+                        "borrelia",
+                        "bpseudomallei",
+                        "brachyspira",
+                        "brachyspira_2",
+                        "brachyspira_3",
+                        "brachyspira_4",
+                        "brachyspira_5",
+                        "brucella",
+                        "bsubtilis",
+                        "bwashoensis",
+                        "campylobacter",
+                        "campylobacter_nonjejuni",
+                        "campylobacter_nonjejuni_2",
+                        "campylobacter_nonjejuni_3",
+                        "campylobacter_nonjejuni_4",
+                        "campylobacter_nonjejuni_5",
+                        "campylobacter_nonjejuni_6",
+                        "campylobacter_nonjejuni_7",
+                        "campylobacter_nonjejuni_8",
+                        "campylobacter_nonjejuni_9",
+                        "cbotulinum",
+                        "cdifficile",
+                        "cfreundii",
+                        "chlamydiales",
+                        "cmaltaromaticum",
+                        "cperfringens",
+                        "cronobacter",
+                        "csepticum",
+                        "dbases.sh",
+                        "diphtheria_3",
+                        "dnodosus",
+                        "ecloacae",
+                        "ecoli",
+                        "ecoli_achtman_4",
+                        "edwardsiella",
+                        "efaecalis",
+                        "efaecium",
+                        "fpsychrophilum",
+                        "gallibacterium",
+                        "geotrichum",
+                        "hcinaedi",
+                        "helicobacter",
+                        "hinfluenzae",
+                        "hparasuis",
+                        "hsuis",
+                        "kaerogenes",
+                        "kingella",
+                        "klebsiella",
+                        "koxytoca",
+                        "leptospira",
+                        "leptospira_2",
+                        "leptospira_3",
+                        "liberibacter",
+                        "listeria_2",
+                        "llactis_phage",
+                        "lsalivarius",
+                        "mabscessus",
+                        "magalactiae",
+                        "manserisalpingitidis",
+                        "mbovis_2",
+                        "mcanis",
+                        "mcaseolyticus",
+                        "mcatarrhalis_achtman_6",
+                        "mflocculare",
+                        "mgallisepticum",
+                        "mgallisepticum_2",
+                        "mhaemolytica",
+                        "mhominis_3",
+                        "mhyopneumoniae",
+                        "mhyorhinis",
+                        "miowae",
+                        "mplutonius",
+                        "mpneumoniae",
+                        "msciuri",
+                        "msynoviae",
+                        "mycobacteria_2",
+                        "neisseria",
+                        "oralstrep",
+                        "orhinotracheale",
+                        "otsutsugamushi",
+                        "pacnes_3",
+                        "paeruginosa",
+                        "pdamselae",
+                        "pfluorescens",
+                        "pgingivalis",
+                        "plarvae",
+                        "pmultocida",
+                        "pmultocida_2",
+                        "ppentosaceus",
+                        "pputida",
+                        "psalmonis",
+                        "ranatipestifer",
+                        "rhodococcus",
+                        "sagalactiae",
+                        "saureus",
+                        "sbsec",
+                        "scanis",
+                        "schromogenes",
+                        "sdysgalactiae",
+                        "senterica_achtman_2",
+                        "sepidermidis",
+                        "sgallolyticus",
+                        "shaemolyticus",
+                        "shewanella",
+                        "shominis",
+                        "sinorhizobium",
+                        "smaltophilia",
+                        "spneumoniae",
+                        "spseudintermedius",
+                        "spyogenes",
+                        "ssuis",
+                        "staphlugdunensis",
+                        "sthermophilus",
+                        "streptomyces",
+                        "streptothermophilus",
+                        "suberis",
+                        "szooepidemicus",
+                        "taylorella",
+                        "tenacibaculum",
+                        "tpallidum",
+                        "ureaplasma",
+                        "vcholerae",
+                        "vcholerae_2",
+                        "vibrio",
+                        "vparahaemolyticus",
+                        "vtapetis",
+                        "vvulnificus",
+                        "wolbachia",
+                        "xfastidiosa",
+                        "ypseudotuberculosis_achtman_3",
+                        "yruckeri"
+                    ],
+                    "description": "Specify scheme name, visit https://github.com/tseemann/mlst/tree/master/db/pubmlst for supported scheme genera available. [Automatic]",
+                    "default": "Automatic"
                 }
             }
+        },
+        "additional_settings": {
+            "title": "Additional Settings",
+            "type": "object",
+            "description": "For advanced changes to staramr",
+            "properties": {
+                "genome_size_lower_bound": {
+                    "type": "integer",
+                    "description": "The lower bound for our genome size for the quality metrics [Default 4000000]",
+                    "default": 4000000,
+                    "minimum": 1
+                },
+                "genome_size_upper_bound": {
+                    "type": "integer",
+                    "description": "The upper bound for our genome size for the quality metrics [Default 6000000].",
+                    "default": 6000000,
+                    "minimum": 1
+                },
+                "minimum_N50_value": {
+                    "type": "integer",
+                    "description": "The minimum N50 value for the quality metrics [Defaults 10000]",
+                    "default": 10000,
+                    "minimum": 1
+                },
+                "minimum_contig_length": {
+                    "type": "integer",
+                    "description": "The minimum contig length for the quality metrics [Default 300 bp]",
+                    "default": 300,
+                    "minimum": 1
+                },
+                "unacceptable_number_contigs": {
+                    "type": "integer",
+                    "description": "The minimum, unacceptable number of contigs which are equal to or above the minimum contig length for our quality metrics [Default 1000]",
+                    "default": 1000,
+                    "minimum": 1
+                },
+                "pid_threshold": {
+                    "type": "integer",
+                    "description": "BLAST percent identity threshold [Default 98]",
+                    "default": 98,
+                    "minimum": 1,
+                    "maximum": 100
+                },
+                "percent_length_overlap_plasmidfinder": {
+                    "type": "integer",
+                    "description": "The percent length overlap for plasmidfinder results [Default 60]",
+                    "default": 60,
+                    "minimum": 1,
+                    "maximum": 100
+                },
+                "percent_length_overlap_resfinder": {
+                    "type": "integer",
+                    "description": "The percent length overlap for resfinder results [Default 60]",
+                    "default": 60,
+                    "minimum": 1,
+                    "maximum": 100
+                },
+                "percent_length_overlap_pointfinder": {
+                    "type": "integer",
+                    "description": "The percent length overlap for pointfinder results [Default 95]",
+                    "default": 95,
+                    "minimum": 1,
+                    "maximum": 100
+                },
+                "no_exclude_genes": {
+                    "type": "boolean",
+                    "description": "Disable the default exclusion of some genes from ResFinder/PointFinder/PlasmidFinder [Default False]"
+                },
+                "exclude_negatives": {
+                    "type": "boolean",
+                    "description": "Exclude negative results (those susceptible to antimicrobials) [Default False]"
+                },
+                "exclude_resistance_phenotypes": {
+                    "type": "boolean",
+                    "description": "Exclude predicted antimicrobial resistances [Default False]."
+                }
+            },
+            "fa_icon": "fas fa-terminal"
         },
         "institutional_config_options": {
             "title": "Institutional config options",
@@ -233,7 +469,10 @@
             "$ref": "#/definitions/input_output_options"
         },
         {
-            "$ref": "#/definitions/reference_genome_options"
+            "$ref": "#/definitions/database"
+        },
+        {
+            "$ref": "#/definitions/additional_settings"
         },
         {
             "$ref": "#/definitions/institutional_config_options"
@@ -244,16 +483,5 @@
         {
             "$ref": "#/definitions/generic_options"
         }
-    ],
-    "properties": {
-        "pointfinder_database": {
-            "type": "string"
-        },
-        "plasmidfinder_database": {
-            "type": "string"
-        },
-        "mlst_scheme": {
-            "type": "string"
-        }
-    }
+    ]
 }

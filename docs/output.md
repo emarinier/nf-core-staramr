@@ -1,4 +1,4 @@
-# nf-core/staramr: Output
+# phac-nml/staramrnf: Output
 
 ## Introduction
 

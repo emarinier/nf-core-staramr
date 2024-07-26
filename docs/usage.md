@@ -1,4 +1,4 @@
-# nf-core/staramr: Usage
+# phac-nml/staramrnf: Usage
 
 ## Introduction
 

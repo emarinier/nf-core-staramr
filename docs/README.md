@@ -1,4 +1,4 @@
-# nf-core/staramr: Documentation
+# phac-nml/staramrnf: Documentation
 
 The nf-core/staramr documentation is split into the following pages:
 

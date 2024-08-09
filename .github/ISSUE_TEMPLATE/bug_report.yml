@@ -8,7 +8,7 @@ body:
         Before you post this issue, please check the documentation:
 
         - [nf-core website: troubleshooting](https://nf-co.re/usage/troubleshooting)
-        - [phac-nml/staramrnf pipeline documentation](https://nf-co.re/staramr/usage)
+        - [phac-nml/staramrnf pipeline documentation](https://https://github.com/phac-nml/staramrnf/blob/main/docs/usage.md)
 
   - type: textarea
     id: description

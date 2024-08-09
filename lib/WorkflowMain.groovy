@@ -1,5 +1,5 @@
 //
-// This file holds several functions specific to the main.nf workflow in the nf-core/staramr pipeline
+// This file holds several functions specific to the main.nf workflow in the phac-nml/staramrnf pipeline
 //
 
 import nextflow.Nextflow

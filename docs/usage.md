@@ -40,7 +40,7 @@ Note: Validated Pointfinder organisms for `species` include: Enterococcus faecal
 The typical command for running the pipeline is as follows:
 
 ```bash
-nextflow run nf-core/staramr --profile test,docker --outdir results
+nextflow run phac-nml/staramrnf --profile test,docker --outdir results
 ```
 
 This will launch the pipeline with the `docker` configuration profile (use `singularity` for singularity profile). See below for more information about profiles.
@@ -63,7 +63,7 @@ Do not use `-c <file>` to specify parameters as this will result in errors. Cust
 The above pipeline run specified with a params file in yaml format:
 
 ```bash
-nextflow run nf-core/staramr -profile docker -params-file params.yaml
+nextflow run phac-nml/staramrnf -profile docker -params-file params.yaml
 ```
 
 with `params.yaml` containing:
@@ -89,7 +89,7 @@ nextflow pull phac-nml/staramrnf
 
 It is a good idea to specify a pipeline version when running the pipeline on your data. This ensures that a specific version of the pipeline code and software are used when you run your pipeline. If you keep using the same tag, you'll be running the same version of the pipeline, even if there have been changes to the code since.
 
-First, go to the [nf-core/staramr releases page](https://github.com/nf-core/staramr/releases) and find the latest pipeline version - numeric only (eg. `1.3.1`). Then specify this when running the pipeline with `-r` (one hyphen) - eg. `-r 1.3.1`. Of course, you can switch to another version by changing the number after the `-r` flag.
+First, go to the [phac-nml/staramrnf releases page](https://github.com/phac-nml/staramrnf/releases) and find the latest pipeline version - numeric only (eg. `1.3.1`). Then specify this when running the pipeline with `-r` (one hyphen) - eg. `-r 1.3.1`. Of course, you can switch to another version by changing the number after the `-r` flag.
 
 This version number will be logged in reports when you run the pipeline, so that you'll know what you used when you look back in the future.
 

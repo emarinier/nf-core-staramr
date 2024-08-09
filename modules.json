@@ -1,6 +1,6 @@
 {
-    "name": "nf-core/staramr",
-    "homePage": "https://github.com/nf-core/staramr",
+    "name": "phac-nml/staramrnf",
+    "homePage": "https://github.com/phac-nml/staramrnf",
     "repos": {
         "https://github.com/nf-core/modules.git": {
             "modules": {

@@ -17,7 +17,7 @@ process SAMPLESHEET_CHECK {
     when:
     task.ext.when == null || task.ext.when
 
-    script: // This script is bundled with the pipeline, in nf-core/staramr/bin/
+    script: // This script is bundled with the pipeline, in phac-nml/staramrnf/bin/
     """
     check_samplesheet.py \\
         $samplesheet \\

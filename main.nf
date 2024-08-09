@@ -1,9 +1,9 @@
 #!/usr/bin/env nextflow
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    nf-core/staramr
+    phac-nml/staramrnf
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Github : https://github.com/nf-core/staramr
+    Github : https://github.com/phac-nml/staramrnf
     Website: https://nf-co.re/staramr
     Slack  : https://nfcore.slack.com/channels/staramr
 ----------------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ WorkflowMain.initialise(workflow, params, log)
 include { STARAMR } from './workflows/staramr'
 
 //
-// WORKFLOW: Run main nf-core/staramr analysis pipeline
+// WORKFLOW: Run main phac-nml/staramrnf analysis pipeline
 //
 workflow NFCORE_STARAMR {
     STARAMR ()

@@ -1,4 +1,4 @@
-# nf-core/staramr: Citations
+# phac-nml/staramrnf: Citations
 
 ## [nf-core](https://pubmed.ncbi.nlm.nih.gov/32055031/)
 

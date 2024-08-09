@@ -19,7 +19,6 @@ If you are new to `Nextflow` and `nf-core`, please refer to [this page](https://
 to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline)
 with `-profile test` before running the workflow on actual data.
 
-
 ```bash
 nextflow run phac-nml/staramrnf -r main -latest -profile test,docker --outdir ./results
 ```
@@ -70,7 +69,6 @@ An [example samplesheet](../assets/samplesheet.csv) has been provided with the p
 
 Note: Validated Pointfinder organisms for `species` include: Enterococcus faecalis, Helicobacter pylori, Salmonella, Enterococcus faecium, Escherichia coli, Campylobacter. Accepted but unvalidated species: Klebsiella, Staphylococcus aureus, Mycobacterium tuberculosis, Neisseria gonorrhoeae, Plasmodium falciparum.
 
-
 ## Output
 
 The directories listed below will be created in the `--outdir <OUTDIR>` directory after the pipeline has finished. All paths are relative to the top-level output directory.
@@ -97,6 +95,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 <summary>Output files</summary>
 
 For More information see [staramr output description](https://github.com/phac-nml/staramr/?tab=readme-ov-file#output)
+
 - `staramr/`
   - StarAMR search results for each sample:
     - `sample_detailed_summary.tsv` : A detailed summary of all detected AMR genes/mutations/plasmids/sequence type in each genome, one gene per line.
@@ -144,30 +143,32 @@ For more information on [StarAMR](https://github.com/phac-nml/staramr/) paramete
 Parameters are run with `--` prefix
 
 Example:
+
 ```bash
 nextflow run main.nf --outdir ./results --input samplesheet.csv --pid_threshold 99
 ```
 
-| Parameters                  | Description                                                                                                                       |
-| ----------------------------| ----------------------------------------------------------------------------------------------------------------------------------|
-|`pointfinder_database`       | Select a single Pointfinder database to use on all samples (overriding samplesheet `species`). Enterococcus faecium, Enterococcus faecalis, Helicobacter pylori, Salmonella, Campylobacter, Escherichia coli **Default:** None (or `species` column)                                                                                                                                                              |
-|`plasmidfinder_database`     | Plasmidfinder database (gram positive or enterobacteriales). **Default:** Both                                                    |
-|`mlst_scheme`                | Specify scheme name [(listed here)](https://github.com/tseemann/mlst/tree/master/db/pubmlst) **Default:** Auto-detect             |
-|`genome_size_lower_bound`    | The lower bound for our genome size for the quality metrics **Default:** 4000000                                                  |
-|`genome_size_upper_bound`    | The upper bound for our genome size for the quality metrics **Default:** 6000000                                                  |
-|`minimum_N50_value`          | The minimum N50 value for the quality metrics **Default:** 10000                                                                  |
-|`minimum_contig_length`      | The minimum contig length for the quality metrics **Default:** 300 (bp)                                                           |
-|`unacceptable_number_contigs`| The minimum, unacceptable number of contigs which are equal to or above the minimum contig length for our quality metrics **Default:** 1000                                                                                                                                                              |
-|`pid_threshold`              | BLAST percent identity threshold **Default:** 98                                                                                  |
-|`percent_length_overlap_plasmidfinder`| The percent length overlap for plasmidfinder results **Default:** 60                                                     |
-|`percent_length_overlap_resfinder` | The percent length overlap for pointfinder results **Default: 95**                                                          |
-|`no_exclude_genes`           | Disable the default exclusion of some genes from ResFinder/PointFinder/PlasmidFinder **Default:** False                           |
-|`exclude_negatives`          | Exclude negative results (those susceptible to antimicrobials) **Default:** False                                                 |
-|`exclude_resistance_phenotypes`| Exclude predicted antimicrobial resistances **Default:** False |
+| Parameters                             | Description                                                                                                                                                                                                                                          |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pointfinder_database`                 | Select a single Pointfinder database to use on all samples (overriding samplesheet `species`). Enterococcus faecium, Enterococcus faecalis, Helicobacter pylori, Salmonella, Campylobacter, Escherichia coli **Default:** None (or `species` column) |
+| `plasmidfinder_database`               | Plasmidfinder database (gram positive or enterobacteriales). **Default:** Both                                                                                                                                                                       |
+| `mlst_scheme`                          | Specify scheme name [(listed here)](https://github.com/tseemann/mlst/tree/master/db/pubmlst) **Default:** Auto-detect                                                                                                                                |
+| `genome_size_lower_bound`              | The lower bound for our genome size for the quality metrics **Default:** 4000000                                                                                                                                                                     |
+| `genome_size_upper_bound`              | The upper bound for our genome size for the quality metrics **Default:** 6000000                                                                                                                                                                     |
+| `minimum_N50_value`                    | The minimum N50 value for the quality metrics **Default:** 10000                                                                                                                                                                                     |
+| `minimum_contig_length`                | The minimum contig length for the quality metrics **Default:** 300 (bp)                                                                                                                                                                              |
+| `unacceptable_number_contigs`          | The minimum, unacceptable number of contigs which are equal to or above the minimum contig length for our quality metrics **Default:** 1000                                                                                                          |
+| `pid_threshold`                        | BLAST percent identity threshold **Default:** 98                                                                                                                                                                                                     |
+| `percent_length_overlap_plasmidfinder` | The percent length overlap for plasmidfinder results **Default:** 60                                                                                                                                                                                 |
+| `percent_length_overlap_resfinder`     | The percent length overlap for pointfinder results **Default: 95**                                                                                                                                                                                   |
+| `no_exclude_genes`                     | Disable the default exclusion of some genes from ResFinder/PointFinder/PlasmidFinder **Default:** False                                                                                                                                              |
+| `exclude_negatives`                    | Exclude negative results (those susceptible to antimicrobials) **Default:** False                                                                                                                                                                    |
+| `exclude_resistance_phenotypes`        | Exclude predicted antimicrobial resistances **Default:** False                                                                                                                                                                                       |
 
 ### Nextflow
 
 For a full set of Nextflow options
+
 ```bash
 nextflow run main.nf -help
 ```
@@ -175,16 +176,16 @@ nextflow run main.nf -help
 Nextflow parameters use `-` prefix
 
 Example `-profile`
+
 ```bash
 nextflow run main.nf -profile test,docker --outdir ./results
 ```
 
-| Parameters     | Description                                                                                                                       |
-| ---------------| ----------------------------------------------------------------------------------------------------------------------------------|
-| `profile`      | Choose a configuration profile (e.g. test, docker, or singularity)                                                                |
-| `resume`       | Execute the script using the cached results, useful to continue executions that was stopped by an error                           |
-| `revision`     | Revision of the project to run (either a git branch, tag or commit SHA number)                                                    |
-
+| Parameters | Description                                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------------- |
+| `profile`  | Choose a configuration profile (e.g. test, docker, or singularity)                                      |
+| `resume`   | Execute the script using the cached results, useful to continue executions that was stopped by an error |
+| `revision` | Revision of the project to run (either a git branch, tag or commit SHA number)                          |
 
 ## Citation
 

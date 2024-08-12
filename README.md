@@ -33,6 +33,7 @@ To run `staramrnf`, you will need to include both mandatory parameters:
 ```bash
 nextflow run phac-nml/staramrnf -r main -latest -profile docker --outdir path/output_folder --input path/samplesheet.csv
 ```
+For more information see [usage doc](docs/usage.md).
 
 ## Input
 
@@ -133,6 +134,7 @@ For More information see [staramr output description](https://github.com/phac-nm
 [Nextflow](https://www.nextflow.io/docs/latest/tracing.html) provides excellent functionality for generating various reports relevant to the running and execution of the pipeline. This will allow you to troubleshoot errors with the running of the pipeline, and also provide you with other information such as launch commands, run times and resource usage.
 
 See the [staramr documentation](https://github.com/phac-nml/staramr/blob/development/README.md) for more details and explanations.
+
 
 ## Parameters
 

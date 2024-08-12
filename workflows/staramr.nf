@@ -30,7 +30,6 @@ WorkflowStaramr.initialise(params, log)
 //
 // SUBWORKFLOW: Consisting of a mix of local and nf-core/modules
 //
-include { INPUT_CHECK    } from '../subworkflows/local/input_check'
 include { STARAMR_SEARCH } from '../modules/local/staramr/main'
 
 /*

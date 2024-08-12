@@ -14,4 +14,4 @@ staramrnf follows the `nf-core` pipeline file structure and used the nf-core [te
 [resfinder-db]: https://bitbucket.org/genomicepidemiology/resfinder_db
 [pointfinder-db]: https://bitbucket.org/genomicepidemiology/pointfinder_db
 [plasmidfinder-db]: https://bitbucket.org/genomicepidemiology/plasmidfinder_db
-[resfinder-web]:  http://genepi.food.dtu.dk/resfinder
+[resfinder-web]: http://genepi.food.dtu.dk/resfinder

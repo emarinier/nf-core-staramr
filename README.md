@@ -238,3 +238,4 @@ specific language governing permissions and limitations under the License.
 [resfinder-db]: https://bitbucket.org/genomicepidemiology/resfinder_db
 [pointfinder-db]: https://bitbucket.org/genomicepidemiology/pointfinder_db
 [plasmidfinder-db]: https://bitbucket.org/genomicepidemiology/plasmidfinder_db
+[resfinder-web]:  http://genepi.food.dtu.dk/resfinder

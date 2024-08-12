@@ -1,18 +1,52 @@
-# nf-core/staramr: Output
+# phac-nml/staramrnf: Output
 
 ## Introduction
 
 This document describes the output produced by the pipeline.
 
-The directories listed below will be created in the results directory after the pipeline has finished. All paths are relative to the top-level results directory.
+The directories listed below will be created in the `<OUTDIR>` directory after the pipeline has finished. All paths are relative to the top-level results directory.
 
-<!-- TODO nf-core: Write this documentation describing your workflow's output -->
+```
+.
+├── csvtk
+├── pipeline_info
+└── staramr
+```
+
+The IRIDA Next-compliant JSON output file will be named `iridanext.output.json.gz` and will be written to the top-level of the results directory. This file is compressed using GZIP and conforms to the [IRIDA Next JSON output specifications](https://github.com/phac-nml/pipeline-standards#42-irida-next-json).
 
 ## Pipeline overview
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
+- [AMR Bacterial Scans](#amr-bacterial-scans) - Scans bacterial genome contigs against the ResFinder, PointFinder, and PlasmidFinder databases and compiles a summary report of detected antimicrobial resistance genes.
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
+
+### AMR Bacterial Scans
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `staramr/`
+  - StarAMR search results for each sample:
+    - `sample_detailed_summary.tsv`
+    - `sample_mlst.tsv`
+    - `sample_plasmidfinder.tsv`
+    - `sample_pointfinder.tsv` (Pointfinder organisms)
+    - `sample_resfinder.tsv`
+    - `sample_results.xlsx`
+    - `sample_settings.txt`
+    - `sample_summary.tsv`
+- `csvtk/`
+  - Combine results from all samples into a single report
+    - `merged_detailed_summary.tsv`
+    - `merged_mlst.tsv`
+    - `merged_plasmidfinder.tsv`
+    - `merged_pointfinder.tsv` (Pointfinder organisms)
+    - `merged_resfinder.tsv`
+    - `merged_summary.tsv`
+
+</details>
 
 ### Pipeline information
 

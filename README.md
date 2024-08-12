@@ -1,48 +1,195 @@
 [![Nextflow](https://img.shields.io/badge/nextflow-%E2%89%A523.04.3-brightgreen.svg)](https://www.nextflow.io/)
 
-# `staramr`: nextflow pipeline
+# `staramrnf`: nextflow pipeline
 
-## Introduction
+**staramrnf: nextflow pipeline** is the nextflow adaptation of [staramr](https://github.com/phac-nml/staramr/)
 
-**staramr: nextflow pipeline** is the nextflow adaptation of the [staramr](https://github.com/phac-nml/staramr/)
+> `staramr` (AMR) scans bacterial genome contigs against the [ResFinder][resfinder-db], [PointFinder][pointfinder-db], and [PlasmidFinder][plasmidfinder-db] databases (used by the [ResFinder webservice][resfinder-web] and other webservices offered by the Center for Genomic Epidemiology) and compiles a summary report of detected antimicrobial resistance genes. The `star`in`staramr` indicates that it can handle all of the ResFinder, PointFinder, and PlasmidFinder databases.
 
-> `staramr` (_AMR) scans bacterial genome contigs against the [ResFinder][resfinder-db], [PointFinder][pointfinder-db], and [PlasmidFinder][plasmidfinder-db] databases (used by the [ResFinder webservice][resfinder-web] and other webservices offered by the Center for Genomic Epidemiology) and compiles a summary report of detected antimicrobial resistance genes. The `star|_`in`staramr` indicates that it can handle all of the ResFinder, PointFinder, and PlasmidFinder databases.
+## Table of Contents
+
+- [Usage](#usage)
+- [Input](#input)
+- [Output](#output)
+- [Parameters](#parameters)
 
 ## Usage
 
-If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/usage/installation) on how
+If you are new to `Nextflow` and `nf-core`, please refer to [this page](https://nf-co.re/docs/usage/installation) on how
 to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline)
 with `-profile test` before running the workflow on actual data.
 
 ```bash
- nextflow run main.nf -profile test,docker --outdir ./results
+nextflow run phac-nml/staramrnf -r main -latest -profile test,docker --outdir ./results
 ```
 
-### Input
+To run `staramrnf`, you will need to include both mandatory parameters:
 
-The input to the pipeline is a standard sample sheet (passed as `--input samplesheet.csv`) that looks like:
+#### Mandatory Parameters
 
-| sample  | contigs          | species             |
-| ------- | ---------------- | ------------------- |
-| SampleA | genomeA.fastq.gz | Salmonella enterica |
-
-The structure of this file is defined in [assets/schema_input.json](assets/schema_input.json). Validation of the sample sheet is performed by [nf-validation](https://nextflow-io.github.io/nf-validation/).
-
-### Output
+- `--input`: a URI to the samplesheet
+- `--output`: the directory for pipeline output
 
 ```bash
-results/staramr/
-└── SampleA_results
-    ├── detailed_summary.tsv
-    ├── mlst.tsv
-    ├── plasmidfinder.tsv
-    ├── resfinder.tsv
-    ├── results.xlsx
-    ├── settings.txt
-    └── summary.tsv
+nextflow run phac-nml/staramrnf -r main -latest -profile docker --outdir path/output_folder --input path/samplesheet.csv
 ```
 
+For more information see [usage doc](docs/usage.md).
+
+## Input
+
+### Samplesheet Input
+
+You will need to create a samplesheet with information about the samples you would like to analyze before running the pipeline. Use this parameter to specify its location.
+
+```bash
+--input '[path to samplesheet file]'
+```
+
+### Samplesheet Description
+
+The input samplesheet requires two columns: `sample`, `contigs` with an optional third column `species`. The `species` column is used in the selecting of the Pointfinder organism database (empty if "None"). Rows of the `sample` column within a samplesheet must be unqiue. Any additional columns that aren't named `sample`, `contigs`, or `species` will be ignored by the pipeline.
+
+Note: The [parameter](#parameters) `--pointfinder_database` overrides the `species` column for all samples.
+
+A final samplesheet file consisting of `sample`, `contigs` and `species`.
+
+```csv title="samplesheet.csv"
+sample,contigs,species
+SAMPLE1,sample1.fastq.gz,Salmonella
+SAMPLE2,sample2fastq.gz,Escherichia coli
+SAMPLE3,sample3.fastq.gz,
+```
+
+| Column    | Description                                                                                          |
+| --------- | ---------------------------------------------------------------------------------------------------- |
+| `sample`  | Custom sample name. Samples should be unique within a samplesheet. **Required**                      |
+| `contigs` | Full path to genome contig(s). Uncompressed or gzipped (.gz) fasta file (fna,fa,fasta). **Required** |
+| `species` | Species of genome (see accepted Pointfinder organisms below). **Optional**                           |
+
+An [example samplesheet](assets/samplesheet.csv) has been provided with the pipeline.
+
+Note: Validated Pointfinder organisms for `species` include: Enterococcus faecalis, Helicobacter pylori, Salmonella, Enterococcus faecium, Escherichia coli, Campylobacter. Accepted but unvalidated species: Klebsiella, Staphylococcus aureus, Mycobacterium tuberculosis, Neisseria gonorrhoeae, Plasmodium falciparum.
+
+## Output
+
+The directories listed below will be created in the `--outdir <OUTDIR>` directory after the pipeline has finished. All paths are relative to the top-level output directory.
+
+```
+.
+├── csvtk
+├── pipeline_info
+└── staramr
+```
+
+The IRIDA Next-compliant JSON output file will be named `iridanext.output.json.gz` and will be written to the top-level of the results directory. This file is compressed using GZIP and conforms to the [IRIDA Next JSON output specifications](https://github.com/phac-nml/pipeline-standards#42-irida-next-json).
+
+### Output Sections
+
+The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
+
+- [AMR Bacterial Scans](#amr-bacterial-scans) - Scans bacterial genome contigs against the ResFinder, PointFinder, and PlasmidFinder databases and compiles a summary report of detected antimicrobial resistance genes.
+- [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
+
+### AMR Bacterial Scans
+
+<details markdown="1">
+<summary>Output files</summary>
+
+For More information see [staramr output description](https://github.com/phac-nml/staramr/?tab=readme-ov-file#output)
+
+- `staramr/`
+  - StarAMR search results for each sample:
+    - `sample_detailed_summary.tsv` : A detailed summary of all detected AMR genes/mutations/plasmids/sequence type in each genome, one gene per line.
+    - `sample_mlst.tsv` : A tabular file of each multi-locus sequence type (MLST) and it's corresponding locus/alleles, one genome per line.
+    - `sample_plasmidfinder.tsv` :A tabular file of each AMR plasmid type and additional BLAST information from the PlasmidFinder database, one plasmid type per line.
+    - `sample_pointfinder.tsv` : A tabular file of each AMR point mutation and additional BLAST information from the PointFinder database, one gene per line.(Pointfinder organisms)
+    - `sample_resfinder.tsv` : A tabular file of each AMR gene and additional BLAST information from the ResFinder database, one gene per line.
+    - `sample_results.xlsx` : An Excel spreadsheet containing the previous 6 files as separate worksheets.
+    - `sample_settings.txt` :The command-line, database versions, and other settings used to run `staramr`.
+    - `sample_summary.tsv` : A summary of all detected AMR genes/mutations/plasmids/sequence type in each genome, one genome per line. A series of descriptive statistics is also provided for each genome as well as feedback for whether or not the genome passes several quality metrics and if not, feedback on why the genome fails.
+- `csvtk/`
+  - Combine results from all samples into a single report
+    - `merged_detailed_summary.tsv`
+    - `merged_mlst.tsv`
+    - `merged_plasmidfinder.tsv`
+    - `merged_pointfinder.tsv` (Pointfinder organisms)
+    - `merged_resfinder.tsv`
+    - `merged_summary.tsv`
+
+</details>
+
+### Pipeline information
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `pipeline_info/`
+  - Reports generated by Nextflow: `execution_report.html`, `execution_timeline.html`, `execution_trace.txt` and `pipeline_dag.dot`/`pipeline_dag.svg`.
+  - Reports generated by the pipeline: `pipeline_report.html`, `pipeline_report.txt` and `software_versions.yml`. The `pipeline_report*` files will only be present if the `--email` / `--email_on_fail` parameter's are used when running the pipeline.
+  - Reformatted samplesheet files used as input to the pipeline: `samplesheet.valid.csv`.
+  - Parameters used by the pipeline run: `params.json`.
+
+</details>
+
+[Nextflow](https://www.nextflow.io/docs/latest/tracing.html) provides excellent functionality for generating various reports relevant to the running and execution of the pipeline. This will allow you to troubleshoot errors with the running of the pipeline, and also provide you with other information such as launch commands, run times and resource usage.
+
 See the [staramr documentation](https://github.com/phac-nml/staramr/blob/development/README.md) for more details and explanations.
+
+For more information see [output doc](docs/output.md).
+
+## Parameters
+
+### StarAMR
+
+For more information on [StarAMR](https://github.com/phac-nml/staramr/) parameters
+
+Parameters are run with `--` prefix
+
+Example:
+
+```bash
+nextflow run main.nf --outdir ./results --input samplesheet.csv --pid_threshold 99
+```
+
+| Parameters                             | Description                                                                                                                                                                                                                                          |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pointfinder_database`                 | Select a single Pointfinder database to use on all samples (overriding samplesheet `species`). Enterococcus faecium, Enterococcus faecalis, Helicobacter pylori, Salmonella, Campylobacter, Escherichia coli **Default:** None (or `species` column) |
+| `plasmidfinder_database`               | Plasmidfinder database (gram positive or enterobacteriales). **Default:** Both                                                                                                                                                                       |
+| `mlst_scheme`                          | Specify scheme name [(listed here)](https://github.com/tseemann/mlst/tree/master/db/pubmlst) **Default:** Auto-detect                                                                                                                                |
+| `genome_size_lower_bound`              | The lower bound for our genome size for the quality metrics **Default:** 4000000                                                                                                                                                                     |
+| `genome_size_upper_bound`              | The upper bound for our genome size for the quality metrics **Default:** 6000000                                                                                                                                                                     |
+| `minimum_N50_value`                    | The minimum N50 value for the quality metrics **Default:** 10000                                                                                                                                                                                     |
+| `minimum_contig_length`                | The minimum contig length for the quality metrics **Default:** 300 (bp)                                                                                                                                                                              |
+| `unacceptable_number_contigs`          | The minimum, unacceptable number of contigs which are equal to or above the minimum contig length for our quality metrics **Default:** 1000                                                                                                          |
+| `pid_threshold`                        | BLAST percent identity threshold **Default:** 98                                                                                                                                                                                                     |
+| `percent_length_overlap_plasmidfinder` | The percent length overlap for plasmidfinder results **Default:** 60                                                                                                                                                                                 |
+| `percent_length_overlap_resfinder`     | The percent length overlap for pointfinder results **Default:** 95                                                                                                                                                                                   |
+| `no_exclude_genes`                     | Disable the default exclusion of some genes from ResFinder/PointFinder/PlasmidFinder **Default:** False                                                                                                                                              |
+| `exclude_negatives`                    | Exclude negative results (those susceptible to antimicrobials) **Default:** False                                                                                                                                                                    |
+| `exclude_resistance_phenotypes`        | Exclude predicted antimicrobial resistances **Default:** False                                                                                                                                                                                       |
+
+### Nextflow
+
+For a full set of Nextflow options
+
+```bash
+nextflow run main.nf -help
+```
+
+Nextflow parameters use `-` prefix
+
+Example `-profile`
+
+```bash
+nextflow run main.nf -profile test,docker --outdir ./results
+```
+
+| Parameters | Description                                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------------- |
+| `profile`  | Choose a configuration profile (e.g. test, docker, or singularity)                                      |
+| `resume`   | Execute the script using the cached results, useful to continue executions that was stopped by an error |
+| `revision` | Revision of the project to run (either a git branch, tag or commit SHA number)                          |
 
 ## Citation
 
@@ -87,3 +234,8 @@ Unless required by applicable law or agreed to in writing, software distributed
 under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
 CONDITIONS OF ANY KIND, either express or implied. See the License for the
 specific language governing permissions and limitations under the License.
+
+[resfinder-db]: https://bitbucket.org/genomicepidemiology/resfinder_db
+[pointfinder-db]: https://bitbucket.org/genomicepidemiology/pointfinder_db
+[plasmidfinder-db]: https://bitbucket.org/genomicepidemiology/plasmidfinder_db
+[resfinder-web]: http://genepi.food.dtu.dk/resfinder

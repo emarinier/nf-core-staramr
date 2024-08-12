@@ -17,7 +17,7 @@
                         "size": "Large",
                         "weight": "Bolder",
                         "color": "<% if (success) { %>Good<% } else { %>Attention<%} %>",
-                        "text": "nf-core/staramr v${version} - ${runName}",
+                        "text": "phac-nml/staramrnf v${version} - ${runName}",
                         "wrap": true
                     },
                     {

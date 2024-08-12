@@ -197,3 +197,6 @@ We recommend adding the following line to your environment to limit this (typica
 ```bash
 NXF_OPTS='-Xms1g -Xmx4g'
 ```
+[resfinder-db]: https://bitbucket.org/genomicepidemiology/resfinder_db
+[pointfinder-db]: https://bitbucket.org/genomicepidemiology/pointfinder_db
+[plasmidfinder-db]: https://bitbucket.org/genomicepidemiology/plasmidfinder_db

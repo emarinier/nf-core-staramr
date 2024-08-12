@@ -8,10 +8,10 @@
 
 ## Table of Contents
 
-- [Usage](#-Usage)
-- [Input](#-Input)
-- [Output](#-Output)
-- [Parameters](#-Parameters)
+- [Usage](#usage)
+- [Input](#input)
+- [Output](#output)
+- [Parameters](#parameters)
 
 ## Usage
 
@@ -48,7 +48,7 @@ You will need to create a samplesheet with information about the samples you wou
 
 The input samplesheet requires two columns: `sample`, `contigs` with an optional third column `species`. The `species` column is used in the selecting of the Pointfinder organism database (empty if "None"). Rows of the `sample` column within a samplesheet must be unqiue. All other columns will be ignored.
 
-Note: The [parameter](#-Parameters) `--pointfinder_database` overrides the `species` column for all samples.
+Note: The [parameter](#parameters) `--pointfinder_database` overrides the `species` column for all samples.
 
 A final samplesheet file consisting of `sample`, `contigs` and `species`.
 

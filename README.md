@@ -65,7 +65,7 @@ SAMPLE3,sample3.fastq.gz,
 | `contigs` | Full path to genome contig(s). Uncompressed or gzipped (.gz) fasta file (fna,fa,fasta). **Required** |
 | `species` | Species of genome (see accepted Pointfinder organisms below). **Optional**                           |
 
-An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline.
+An [example samplesheet](assets/samplesheet.csv) has been provided with the pipeline.
 
 Note: Validated Pointfinder organisms for `species` include: Enterococcus faecalis, Helicobacter pylori, Salmonella, Enterococcus faecium, Escherichia coli, Campylobacter. Accepted but unvalidated species: Klebsiella, Staphylococcus aureus, Mycobacterium tuberculosis, Neisseria gonorrhoeae, Plasmodium falciparum.
 

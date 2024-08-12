@@ -33,6 +33,7 @@ To run `staramrnf`, you will need to include both mandatory parameters:
 ```bash
 nextflow run phac-nml/staramrnf -r main -latest -profile docker --outdir path/output_folder --input path/samplesheet.csv
 ```
+
 For more information see [usage doc](docs/usage.md).
 
 ## Input
@@ -236,4 +237,4 @@ specific language governing permissions and limitations under the License.
 
 [resfinder-db]: https://bitbucket.org/genomicepidemiology/resfinder_db
 [pointfinder-db]: https://bitbucket.org/genomicepidemiology/pointfinder_db
-[plasmidfinder-db]:https://bitbucket.org/genomicepidemiology/plasmidfinder_db
+[plasmidfinder-db]: https://bitbucket.org/genomicepidemiology/plasmidfinder_db

@@ -135,6 +135,7 @@ For More information see [staramr output description](https://github.com/phac-nm
 
 See the [staramr documentation](https://github.com/phac-nml/staramr/blob/development/README.md) for more details and explanations.
 
+For more information see [output doc](docs/output.md).
 
 ## Parameters
 

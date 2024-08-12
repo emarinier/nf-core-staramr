@@ -48,7 +48,7 @@ You will need to create a samplesheet with information about the samples you wou
 
 ### Samplesheet Description
 
-The input samplesheet requires two columns: `sample`, `contigs` with an optional third column `species`. The `species` column is used in the selecting of the Pointfinder organism database (empty if "None"). Rows of the `sample` column within a samplesheet must be unqiue. All other columns will be ignored.
+The input samplesheet requires two columns: `sample`, `contigs` with an optional third column `species`. The `species` column is used in the selecting of the Pointfinder organism database (empty if "None"). Rows of the `sample` column within a samplesheet must be unqiue. Any additional columns that aren't named `sample`, `contigs`, or `species` will be ignored by the pipeline.
 
 Note: The [parameter](#parameters) `--pointfinder_database` overrides the `species` column for all samples.
 

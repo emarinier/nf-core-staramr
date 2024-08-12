@@ -33,6 +33,9 @@ nextflow_pipeline {
             assert salmonella_metadata."StarAMR Plasmid" == "IncFIB(K), IncFIB(S), IncFII(S)"
             assert salmonella_metadata."StarAMR Scheme" == "senterica_achtman_2"
             assert salmonella_metadata."StarAMR Sequence Type" == "66"
+            assert salmonella_metadata."StarAMR N50 value": "4755700"
+            assert salmonella_metadata."StarAMR Genome Length": "4944000"
+
             // Listeria tests
             def listeria_metadata = iridanext_metadata.GCF_000196035
             assert listeria_metadata."StarAMR Quality Module" == "Failed"
@@ -42,6 +45,9 @@ nextflow_pipeline {
             assert listeria_metadata."StarAMR Plasmid" == "None"
             assert listeria_metadata."StarAMR Scheme" == "listeria_2"
             assert listeria_metadata."StarAMR Sequence Type" == "35"
+            assert listeria_metadata."StarAMR N50 value": "2944528"
+            assert listeria_metadata."StarAMR Genome Length": "2944528"
+
             // E coli tests
             def ecoli_metadata = iridanext_metadata.GCA_000947975
             assert ecoli_metadata."StarAMR Quality Module" == "Passed"
@@ -51,6 +57,8 @@ nextflow_pipeline {
             assert ecoli_metadata."StarAMR Plasmid" == "IncQ1"
             assert ecoli_metadata."StarAMR Scheme" == "ecoli_achtman_4"
             assert ecoli_metadata."StarAMR Sequence Type" == "678"
+            assert ecoli_metadata."StarAMR N50 value": "122025"
+            assert ecoli_metadata."StarAMR Genome Length": "5333525"
 
             // Check the commandline parameters
             // Salmonella

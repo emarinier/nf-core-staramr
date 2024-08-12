@@ -3,7 +3,7 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 0.1.0 - [2024-12-08]
+## [0.1.0] - 2024-12-08
 
 Initial release of staramrnf, or staramr nextflow pipeline, is a nextflow wrapper of [staramr](https://github.com/phac-nml/staramr/).
 
@@ -15,3 +15,5 @@ staramrnf follows the `nf-core` pipeline file structure and used the nf-core [te
 [pointfinder-db]: https://bitbucket.org/genomicepidemiology/pointfinder_db
 [plasmidfinder-db]: https://bitbucket.org/genomicepidemiology/plasmidfinder_db
 [resfinder-web]: http://genepi.food.dtu.dk/resfinder
+
+[0.1.0]: https://github.com/phac-nml/staramrnf/releases/tag/0.1.0

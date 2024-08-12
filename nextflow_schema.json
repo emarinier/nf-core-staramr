@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://raw.githubusercontent.com/phac-nml/staramrnf/master/nextflow_schema.json",
+    "$id": "https://raw.githubusercontent.com/phac-nml/staramrnf/main/nextflow_schema.json",
     "title": "phac-nml/staramrnf pipeline parameters",
     "description": "StarAMR: Scans genome contigs against the ResFinder, PlasmidFinder, and PointFinder databases.",
     "type": "object",
@@ -305,7 +305,7 @@
                 "custom_config_version": {
                     "type": "string",
                     "description": "Git commit id for Institutional configs.",
-                    "default": "master",
+                    "default": "main",
                     "hidden": true,
                     "fa_icon": "fas fa-users-cog"
                 },

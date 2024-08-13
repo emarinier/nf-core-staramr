@@ -29,22 +29,22 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 
 - `staramr/`
   - StarAMR search results for each sample:
-    - `sample_detailed_summary.tsv`
-    - `sample_mlst.tsv`
-    - `sample_plasmidfinder.tsv`
-    - `sample_pointfinder.tsv` (Pointfinder organisms)
-    - `sample_resfinder.tsv`
-    - `sample_results.xlsx`
-    - `sample_settings.txt`
-    - `sample_summary.tsv`
+    - `sample_detailed_summary.staramr.tsv`
+    - `sample_mlst.staramr.tsv`
+    - `sample_plasmidfinder.staramr.tsv`
+    - `sample_pointfinder.staramr.tsv` (Pointfinder organisms)
+    - `sample_resfinder.staramr.tsv`
+    - `sample_results.staramr.xlsx`
+    - `sample_settings.staramr.txt`
+    - `sample_summary.staramr.tsv`
 - `csvtk/`
   - Combine results from all samples into a single report
-    - `merged_detailed_summary.tsv`
-    - `merged_mlst.tsv`
-    - `merged_plasmidfinder.tsv`
-    - `merged_pointfinder.tsv` (Pointfinder organisms)
-    - `merged_resfinder.tsv`
-    - `merged_summary.tsv`
+    - `merged_detailed_summary.staramr.tsv`
+    - `merged_mlst.staramr.tsv`
+    - `merged_plasmidfinder.staramr.tsv`
+    - `merged_pointfinder.staramr.tsv` (Pointfinder organisms)
+    - `merged_resfinder.staramr.tsv`
+    - `merged_summary.staramr.tsv`
 
 </details>
 

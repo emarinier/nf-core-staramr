@@ -100,22 +100,22 @@ For More information see [staramr output description](https://github.com/phac-nm
 
 - `staramr/`
   - StarAMR search results for each sample:
-    - `sample_detailed_summary.tsv` : A detailed summary of all detected AMR genes/mutations/plasmids/sequence type in each genome, one gene per line.
-    - `sample_mlst.tsv` : A tabular file of each multi-locus sequence type (MLST) and it's corresponding locus/alleles, one genome per line.
-    - `sample_plasmidfinder.tsv` :A tabular file of each AMR plasmid type and additional BLAST information from the PlasmidFinder database, one plasmid type per line.
-    - `sample_pointfinder.tsv` : A tabular file of each AMR point mutation and additional BLAST information from the PointFinder database, one gene per line.(Pointfinder organisms)
-    - `sample_resfinder.tsv` : A tabular file of each AMR gene and additional BLAST information from the ResFinder database, one gene per line.
-    - `sample_results.xlsx` : An Excel spreadsheet containing the previous 6 files as separate worksheets.
-    - `sample_settings.txt` :The command-line, database versions, and other settings used to run `staramr`.
-    - `sample_summary.tsv` : A summary of all detected AMR genes/mutations/plasmids/sequence type in each genome, one genome per line. A series of descriptive statistics is also provided for each genome as well as feedback for whether or not the genome passes several quality metrics and if not, feedback on why the genome fails.
+    - `sample_detailed_summary.staramr.tsv` : A detailed summary of all detected AMR genes/mutations/plasmids/sequence type in each genome, one gene per line.
+    - `sample_mlst.staramr.tsv` : A tabular file of each multi-locus sequence type (MLST) and it's corresponding locus/alleles, one genome per line.
+    - `sample_plasmidfinder.staramr.tsv` :A tabular file of each AMR plasmid type and additional BLAST information from the PlasmidFinder database, one plasmid type per line.
+    - `sample_pointfinder.staramr.tsv` : A tabular file of each AMR point mutation and additional BLAST information from the PointFinder database, one gene per line.(Pointfinder organisms)
+    - `sample_resfinder.staramr.tsv` : A tabular file of each AMR gene and additional BLAST information from the ResFinder database, one gene per line.
+    - `sample_results.staramr.xlsx` : An Excel spreadsheet containing the previous 6 files as separate worksheets.
+    - `sample_settings.staramr.txt` :The command-line, database versions, and other settings used to run `staramr`.
+    - `sample_summary.staramr.tsv` : A summary of all detected AMR genes/mutations/plasmids/sequence type in each genome, one genome per line. A series of descriptive statistics is also provided for each genome as well as feedback for whether or not the genome passes several quality metrics and if not, feedback on why the genome fails.
 - `csvtk/`
   - Combine results from all samples into a single report
-    - `merged_detailed_summary.tsv`
-    - `merged_mlst.tsv`
-    - `merged_plasmidfinder.tsv`
-    - `merged_pointfinder.tsv` (Pointfinder organisms)
-    - `merged_resfinder.tsv`
-    - `merged_summary.tsv`
+    - `merged_detailed_summary.staramr.tsv`
+    - `merged_mlst.staramr.tsv`
+    - `merged_plasmidfinder.staramr.tsv`
+    - `merged_pointfinder.staramr.tsv` (Pointfinder organisms)
+    - `merged_resfinder.staramr.tsv`
+    - `merged_summary.staramr.tsv`
 
 </details>
 

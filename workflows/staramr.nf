@@ -73,7 +73,7 @@ workflow STARAMR {
     ch_tsvs_1 = tsv_files_1.map{
         meta, summary_tsv -> summary_tsv
     }.collect().map{
-        summary_tsv -> [ [id:"merged_summary"], summary_tsv]
+        summary_tsv -> [ [id:"merged_summary.staramr"], summary_tsv]
     }
 
     // 2) detailed_summary.tsv file
@@ -82,7 +82,7 @@ workflow STARAMR {
     ch_tsvs_2 = tsv_files_2.map{
         meta, detailed_summary_tsv -> detailed_summary_tsv
     }.collect().map{
-        detailed_summary_tsv -> [ [id:"merged_detailed_summary"], detailed_summary_tsv]
+        detailed_summary_tsv -> [ [id:"merged_detailed_summary.staramr"], detailed_summary_tsv]
     }
 
     // 3) resfinder.tsv file
@@ -91,7 +91,7 @@ workflow STARAMR {
     ch_tsvs_3 = tsv_files_3.map{
         meta, resfinder_tsv -> resfinder_tsv
     }.collect().map{
-        resfinder_tsv -> [ [id:"merged_resfinder"], resfinder_tsv]
+        resfinder_tsv -> [ [id:"merged_resfinder.staramr"], resfinder_tsv]
     }
 
     // 4) plasmidfinder.tsv file
@@ -100,7 +100,7 @@ workflow STARAMR {
     ch_tsvs_4 = tsv_files_4.map{
         meta, plasmidfinder_tsv -> plasmidfinder_tsv
     }.collect().map{
-        plasmidfinder_tsv -> [ [id:"merged_plasmidfinder"], plasmidfinder_tsv]
+        plasmidfinder_tsv -> [ [id:"merged_plasmidfinder.staramr"], plasmidfinder_tsv]
     }
 
     // 5) mlst.tsv file
@@ -109,7 +109,7 @@ workflow STARAMR {
     ch_tsvs_5 = tsv_files_5.map{
         meta, mlst_tsv -> mlst_tsv
     }.collect().map{
-        mlst_tsv -> [ [id:"merged_mlst"], mlst_tsv]
+        mlst_tsv -> [ [id:"merged_mlst.staramr"], mlst_tsv]
     }
 
     // 6) pointfinder.tsv file
@@ -118,7 +118,7 @@ workflow STARAMR {
     ch_tsvs_6 = tsv_files_6.map{
         meta, pointfinder_tsv -> pointfinder_tsv
     }.collect().map{
-        pointfinder_tsv -> [ [id:"merged_pointfinder"], pointfinder_tsv]
+        pointfinder_tsv -> [ [id:"merged_pointfinder.staramr"], pointfinder_tsv]
     }.mix(ch_tsvs_1,ch_tsvs_2,ch_tsvs_3,ch_tsvs_4,ch_tsvs_5)
 
     CSVTK_CONCAT(

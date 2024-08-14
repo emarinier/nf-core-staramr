@@ -1,17 +1,24 @@
 {
-    "name": "nf-core/staramr",
-    "homePage": "https://github.com/nf-core/staramr",
+    "name": "phac-nml/staramrnf",
+    "homePage": "https://github.com/phac-nml/staramrnf",
     "repos": {
         "https://github.com/nf-core/modules.git": {
             "modules": {
                 "nf-core": {
+                    "csvtk/concat": {
+                        "branch": "master",
+                        "git_sha": "cfe2a24902bfdfe8132f11461ffda92d257f9f09",
+                        "installed_by": ["modules"]
+                    },
                     "custom/dumpsoftwareversions": {
                         "branch": "master",
-                        "git_sha": "911696ea0b62df80e900ef244d7867d177971f73",
+                        "git_sha": "82501fe6d0d12614db67751d30af98d16e63dc59",
                         "installed_by": ["modules"]
                     }
-                    }
                 }
+            },
+            "subworkflows": {
+                "nf-core": {}
             }
         }
     }

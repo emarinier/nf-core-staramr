@@ -1,5 +1,5 @@
 name: Feature request
-description: Suggest an idea for the nf-core/staramr pipeline
+description: Suggest an idea for the phac-nml/staramrnf pipeline
 labels: enhancement
 body:
   - type: textarea

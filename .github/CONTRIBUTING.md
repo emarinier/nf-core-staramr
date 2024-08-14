@@ -1,24 +1,20 @@
-# nf-core/staramr: Contributing Guidelines
+# phac-nml/staramrnf: Contributing Guidelines
 
 Hi there!
-Many thanks for taking an interest in improving nf-core/staramr.
+Many thanks for taking an interest in improving phac-nml/staramrnf.
 
-We try to manage the required tasks for nf-core/staramr using GitHub issues, you probably came to this page when creating one.
+We try to manage the required tasks for phac-nml/staramrnf using GitHub issues, you probably came to this page when creating one.
 Please use the pre-filled template to save time.
 
 However, don't be put off by this template - other more general issues and suggestions are welcome!
 Contributions to the code are even more welcome ;)
 
-:::info
-If you need help using or modifying nf-core/staramr then the best place to ask is on the nf-core Slack [#staramr](https://nfcore.slack.com/channels/staramr) channel ([join our Slack here](https://nf-co.re/join/slack)).
-:::
-
 ## Contribution workflow
 
-If you'd like to write some code for nf-core/staramr, the standard workflow is as follows:
+If you'd like to write some code for phac-nml/staramrnf, the standard workflow is as follows:
 
-1. Check that there isn't already an issue about your idea in the [nf-core/staramr issues](https://github.com/nf-core/staramr/issues) to avoid duplicating work. If there isn't one already, please create one so that others know you're working on this
-2. [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the [nf-core/staramr repository](https://github.com/nf-core/staramr) to your GitHub account
+1. Check that there isn't already an issue about your idea in the [phac-nml/staramrnf issues](https://github.com/phac-nml/staramrnf/issues) to avoid duplicating work. If there isn't one already, please create one so that others know you're working on this
+2. [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the [phac-nml/staramrnf repository](https://github.com/phac-nml/staramrnf) to your GitHub account
 3. Make the necessary changes / additions within your forked repository following [Pipeline conventions](#pipeline-contribution-conventions)
 4. Use `nf-core schema build` and add any new parameters to the pipeline JSON schema (requires [nf-core tools](https://github.com/nf-core/tools) >= 1.10).
 5. Submit a Pull Request against the `dev` branch and wait for the code to be reviewed and merged
@@ -50,17 +46,17 @@ These tests are run both with the latest available version of `Nextflow` and als
 
 :warning: Only in the unlikely and regretful event of a release happening with a bug.
 
-- On your own fork, make a new branch `patch` based on `upstream/master`.
+- On your own fork, make a new branch `patch` based on `upstream/main`.
 - Fix the bug, and bump version (X.Y.Z+1).
-- A PR should be made on `master` from patch to directly this particular bug.
+- A PR should be made on `main` from patch to directly this particular bug.
 
 ## Getting help
 
-For further information/help, please consult the [nf-core/staramr documentation](https://nf-co.re/staramr/usage) and don't hesitate to get in touch on the nf-core Slack [#staramr](https://nfcore.slack.com/channels/staramr) channel ([join our Slack here](https://nf-co.re/join/slack)).
+For further information/help, please consult the [phac-nml/staramrnf documentation](https://github.com/phac-nml/staramrnf).
 
 ## Pipeline contribution conventions
 
-To make the nf-core/staramr code and processing logic more understandable for new contributors and to ensure quality, we semi-standardise the way the code and other contributions are written.
+To make the phac-nml/staramrnf code and processing logic more understandable for new contributors and to ensure quality, we semi-standardise the way the code and other contributions are written.
 
 ### Adding a new step
 
@@ -110,7 +106,7 @@ This repo includes a devcontainer configuration which will create a GitHub Codes
 
 To get started:
 
-- Open the repo in [Codespaces](https://github.com/nf-core/staramr/codespaces)
+- Open the repo in [Codespaces](https://github.com/phac-nml/staramrnf/codespaces)
 - Tools installed
   - nf-core
   - Nextflow

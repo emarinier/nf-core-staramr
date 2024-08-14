@@ -1,18 +1,52 @@
-# nf-core/staramr: Output
+# phac-nml/staramrnf: Output
 
 ## Introduction
 
 This document describes the output produced by the pipeline.
 
-The directories listed below will be created in the results directory after the pipeline has finished. All paths are relative to the top-level results directory.
+The directories listed below will be created in the `<OUTDIR>` directory after the pipeline has finished. All paths are relative to the top-level results directory.
 
-<!-- TODO nf-core: Write this documentation describing your workflow's output -->
+```
+.
+├── csvtk
+├── pipeline_info
+└── staramr
+```
+
+The IRIDA Next-compliant JSON output file will be named `iridanext.output.json.gz` and will be written to the top-level of the results directory. This file is compressed using GZIP and conforms to the [IRIDA Next JSON output specifications](https://github.com/phac-nml/pipeline-standards#42-irida-next-json).
 
 ## Pipeline overview
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
+- [AMR Bacterial Scans](#amr-bacterial-scans) - Scans bacterial genome contigs against the ResFinder, PointFinder, and PlasmidFinder databases and compiles a summary report of detected antimicrobial resistance genes.
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
+
+### AMR Bacterial Scans
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `staramr/`
+  - StarAMR search results for each sample:
+    - `sample_detailed_summary.staramr.tsv`
+    - `sample_mlst.staramr.tsv`
+    - `sample_plasmidfinder.staramr.tsv`
+    - `sample_pointfinder.staramr.tsv` (Pointfinder organisms)
+    - `sample_resfinder.staramr.tsv`
+    - `sample_results.staramr.xlsx`
+    - `sample_settings.staramr.txt`
+    - `sample_summary.staramr.tsv`
+- `csvtk/`
+  - Combine results from all samples into a single report
+    - `merged_detailed_summary.staramr.tsv`
+    - `merged_mlst.staramr.tsv`
+    - `merged_plasmidfinder.staramr.tsv`
+    - `merged_pointfinder.staramr.tsv` (Pointfinder organisms)
+    - `merged_resfinder.staramr.tsv`
+    - `merged_summary.staramr.tsv`
+
+</details>
 
 ### Pipeline information
 

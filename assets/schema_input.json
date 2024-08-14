@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://raw.githubusercontent.com/nf-core/staramr/master/assets/schema_input.json",
-    "title": "nf-core/staramr pipeline - params.input schema",
+    "$id": "https://raw.githubusercontent.com/phac-nml/staramrnf/main/assets/schema_input.json",
+    "title": "phac-nml/staramrnf pipeline - params.input schema",
     "description": "Schema for the file provided with params.input",
     "type": "array",
     "items": {
@@ -15,8 +15,9 @@
             },
             "contigs": {
                 "type": "string",
-                "pattern": "^\\S+\\.f(ast)?a\\.gz$",
-                "errorMessage": "FASTA file containing assembled contigs, cannot contain spaces and must have extension '.fa.gz' or '.fasta.gz'"
+                "format": "file-path",
+                "pattern": "^\\S+\\.f(ast|n)?a(\\.gz)?$",
+                "errorMessage": "FASTA file containing assembled contigs, cannot contain spaces and must have extension ('.fa', '.fasta', or '.fna'). GZIP-compressed files must additionally have the '.gz' extension."
             },
             "species": {
                 "type": "string",

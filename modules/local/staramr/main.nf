@@ -11,15 +11,15 @@ process STARAMR_SEARCH {
     tuple val(meta), path(contigs)
 
     output:
-    tuple val(meta), path("*_results/${meta.id}_results.xlsx")          , emit: results_xlsx
-    tuple val(meta), path("*_results/${meta.id}_summary.tsv")           , emit: summary_tsv
-    tuple val(meta), path("*_results/${meta.id}_detailed_summary.tsv")  , emit: detailed_summary_tsv
-    tuple val(meta), path("*_results/${meta.id}_resfinder.tsv")         , emit: resfinder_tsv
-    tuple val(meta), path("*_results/${meta.id}_plasmidfinder.tsv")     , emit: plasmidfinder_tsv
-    tuple val(meta), path("*_results/${meta.id}_mlst.tsv")              , emit: mlst_tsv
-    tuple val(meta), path("*_results/${meta.id}_settings.txt")          , emit: settings_txt
-    tuple val(meta), path("*_results/${meta.id}_pointfinder.tsv")       , emit: pointfinder_tsv, optional: true
-    path "versions.yml"                                                 , emit: versions
+    tuple val(meta), path("*_results/${meta.id}_results.staramr.xlsx")          , emit: results_xlsx
+    tuple val(meta), path("*_results/${meta.id}_summary.staramr.tsv")           , emit: summary_tsv
+    tuple val(meta), path("*_results/${meta.id}_detailed_summary.staramr.tsv")  , emit: detailed_summary_tsv
+    tuple val(meta), path("*_results/${meta.id}_resfinder.staramr.tsv")         , emit: resfinder_tsv
+    tuple val(meta), path("*_results/${meta.id}_plasmidfinder.staramr.tsv")     , emit: plasmidfinder_tsv
+    tuple val(meta), path("*_results/${meta.id}_mlst.staramr.tsv")              , emit: mlst_tsv
+    tuple val(meta), path("*_results/${meta.id}_settings.staramr.txt")          , emit: settings_txt
+    tuple val(meta), path("*_results/${meta.id}_pointfinder.staramr.tsv")       , emit: pointfinder_tsv, optional: true
+    path "versions.yml"                                                         , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -48,6 +48,9 @@ process STARAMR_SEARCH {
     # Add prefix ($meta.id) to the names of output files (allows for CSVTK module to concatenate files downstream)
     for f in ${prefix}_results/* ; do mv "\$f" \$(echo \$f | sed 's;/;/${prefix}_;'); done
 
+    # Add extension (.staramr) to the names of output files (to simplify output differntiation amongst other modules)
+    for f in ${prefix}_results/*{.tsv,.xlsx,.txt} ; do mv "\$f" \$(echo \$f | sed 's;\\.\\([^\\.]*\\)\$;\\.staramr\\.\\1;'); done
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         staramr : \$(echo \$(staramr --version 2>&1) | sed 's/^.*staramr //' )
@@ -59,9 +62,9 @@ process STARAMR_SEARCH {
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     mkdir ${prefix}_results
-    touch ${prefix}_results/results.xlsx
-    touch ${prefix}_results/{${prefix}_summary,${prefix}_detailed_summary,${prefix}_resfinder,${prefix}_pointfinder,${prefix}_plasmidfinder,mlst}.tsv
-    touch ${prefix}_results/settings.txt
+    touch ${prefix}_results/results.staramr.xlsx
+    touch ${prefix}_results/{${prefix}_summary,${prefix}_detailed_summary,${prefix}_resfinder,${prefix}_pointfinder,${prefix}_plasmidfinder,mlst}.staramr.tsv
+    touch ${prefix}_results/settings.staramr.txt
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

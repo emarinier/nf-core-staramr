@@ -62,52 +62,52 @@ nextflow_pipeline {
 
             // Check the commandline parameters
             // Salmonella
-            assert path("$baseDir/tests/results/staramr/GCA_000008105_results/GCA_000008105_settings.txt").exists()
-            def salmonella_settings = new File("$baseDir/tests/results/staramr/GCA_000008105_results/GCA_000008105_settings.txt")
+            assert path("$baseDir/tests/results/staramr/GCA_000008105_results/GCA_000008105_settings.staramr.txt").exists()
+            def salmonella_settings = new File("$baseDir/tests/results/staramr/GCA_000008105_results/GCA_000008105_settings.staramr.txt")
             def salmonella_cmd = salmonella_settings.readLines().get(0)
             assert salmonella_cmd == "command_line                  = /usr/local/bin/staramr search --pointfinder-organism salmonella --minimum-contig-length 300 --genome-size-lower-bound 4000000 --genome-size-upper-bound 6000000 --minimum-N50-value 10000 --minimum-contig-length 300 --unacceptable-number-contigs 1000 --pid-threshold 98 --percent-length-overlap-plasmidfinder 60 --percent-length-overlap-resfinder 60 --percent-length-overlap-pointfinder 95 --nprocs 1 -o GCA_000008105_results GCA_000008105.fasta"
 
             // Ecoli
-            assert path("$baseDir/tests/results/staramr/GCA_000947975_results/GCA_000947975_settings.txt").exists()
-            def ecoli_settings = new File("$baseDir/tests/results/staramr/GCA_000947975_results/GCA_000947975_settings.txt")
+            assert path("$baseDir/tests/results/staramr/GCA_000947975_results/GCA_000947975_settings.staramr.txt").exists()
+            def ecoli_settings = new File("$baseDir/tests/results/staramr/GCA_000947975_results/GCA_000947975_settings.staramr.txt")
             def ecoli_cmd = ecoli_settings.readLines().get(0)
             assert ecoli_cmd == "command_line                  = /usr/local/bin/staramr search --pointfinder-organism escherichia_coli --minimum-contig-length 300 --genome-size-lower-bound 4000000 --genome-size-upper-bound 6000000 --minimum-N50-value 10000 --minimum-contig-length 300 --unacceptable-number-contigs 1000 --pid-threshold 98 --percent-length-overlap-plasmidfinder 60 --percent-length-overlap-resfinder 60 --percent-length-overlap-pointfinder 95 --nprocs 1 -o GCA_000947975_results GCA_000947975.fasta"
 
             // Listeria
-            assert path("$baseDir/tests/results/staramr/GCF_000196035_results/GCF_000196035_settings.txt").exists()
-            def listeria_settings = new File("$baseDir/tests/results/staramr/GCF_000196035_results/GCF_000196035_settings.txt")
+            assert path("$baseDir/tests/results/staramr/GCF_000196035_results/GCF_000196035_settings.staramr.txt").exists()
+            def listeria_settings = new File("$baseDir/tests/results/staramr/GCF_000196035_results/GCF_000196035_settings.staramr.txt")
             def listeria_cmd = listeria_settings.readLines().get(0)
             assert listeria_cmd == "command_line                  = /usr/local/bin/staramr search --minimum-contig-length 300 --genome-size-lower-bound 4000000 --genome-size-upper-bound 6000000 --minimum-N50-value 10000 --minimum-contig-length 300 --unacceptable-number-contigs 1000 --pid-threshold 98 --percent-length-overlap-plasmidfinder 60 --percent-length-overlap-resfinder 60 --percent-length-overlap-pointfinder 95 --nprocs 1 -o GCF_000196035_results GCF_000196035.fasta"
 
             // Check CSVTK_concat output (merged_*) files
 
             // merged_detailed_summary.tsv
-            def actual_detailed_summary_tsv = path("$baseDir/tests/results/csvtk/merged_detailed_summary.tsv")
+            def actual_detailed_summary_tsv = path("$baseDir/tests/results/csvtk/merged_detailed_summary.staramr.tsv")
             def expected_detailed_summary_tsv = path("$baseDir/tests/data/merged_detailed_summary.tsv")
             assert actual_detailed_summary_tsv.readLines().sort() == expected_detailed_summary_tsv.readLines().sort()
 
             // merged_mlst.tsv
-            def actual_mlst_tsv = path("$baseDir/tests/results/csvtk/merged_mlst.tsv")
+            def actual_mlst_tsv = path("$baseDir/tests/results/csvtk/merged_mlst.staramr.tsv")
             def expected_mlst_tsv = path("$baseDir/tests/data/merged_mlst.tsv")
             assert actual_mlst_tsv.readLines().sort() == expected_mlst_tsv.readLines().sort()
 
             // merged_plasmidfinder.tsv
-            def actual_plasmidfinder_tsv = path("$baseDir/tests/results/csvtk/merged_plasmidfinder.tsv")
+            def actual_plasmidfinder_tsv = path("$baseDir/tests/results/csvtk/merged_plasmidfinder.staramr.tsv")
             def expected_plasmidfinder_tsv = path("$baseDir/tests/data/merged_plasmidfinder.tsv")
             assert actual_plasmidfinder_tsv.readLines().sort() == expected_plasmidfinder_tsv.readLines().sort()
 
             // merged_pointfinder.tsv
-            def actual_pointfinder_tsv = path("$baseDir/tests/results/csvtk/merged_pointfinder.tsv")
+            def actual_pointfinder_tsv = path("$baseDir/tests/results/csvtk/merged_pointfinder.staramr.tsv")
             def expected_pointfinder_tsv = path("$baseDir/tests/data/merged_pointfinder.tsv")
             assert actual_pointfinder_tsv.readLines().sort() == expected_pointfinder_tsv.readLines().sort()
 
             // merged_resfinder.tsv
-            def actual_resfinder_tsv = path("$baseDir/tests/results/csvtk/merged_resfinder.tsv")
+            def actual_resfinder_tsv = path("$baseDir/tests/results/csvtk/merged_resfinder.staramr.tsv")
             def expected_resfinder_tsv = path("$baseDir/tests/data/merged_resfinder.tsv")
             assert actual_resfinder_tsv.readLines().sort() == expected_resfinder_tsv.readLines().sort()
 
             // merged_summary.tsv
-            def actual_summary_tsv = path("$baseDir/tests/results/csvtk/merged_summary.tsv")
+            def actual_summary_tsv = path("$baseDir/tests/results/csvtk/merged_summary.staramr.tsv")
             def expected_summary_tsv = path("$baseDir/tests/data/merged_summary.tsv")
             assert actual_summary_tsv.readLines().sort() == expected_summary_tsv.readLines().sort()
         }

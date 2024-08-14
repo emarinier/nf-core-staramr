@@ -49,7 +49,7 @@ process STARAMR_SEARCH {
     for f in ${prefix}_results/* ; do mv "\$f" \$(echo \$f | sed 's;/;/${prefix}_;'); done
 
     # Add extension (.staramr) to the names of output files (to simplify output differntiation amongst other modules)
-    for f in ${prefix}_results/*{.tsv,.xlsx,.txt} ; do mv "\$f" \$(echo \$f | sed 's;\\.;\\.staramr\\.;'); done
+    for f in ${prefix}_results/*{.tsv,.xlsx,.txt} ; do mv "\$f" \$(echo \$f | sed 's;\\.\\([^\\.]*\\)\$;\\.staramr\\.\\1;'); done
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

@@ -7,10 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Changed`
 
-  - Modified the template for input csv file to include a `sample_name` column in addition to `sample` in-line with changes to [IRIDA-Next update] as seen with the [speciesabundance pipeline]
-    - `sample_name` special characters will be replaced with `"-"`
-    - If no `sample_name` is supplied in the column `sample` will be used
-    - To avoid repeat values for `sample_name` all `sample_name` values will be suffixed with the index of the `input` samplesheet.csv
+- Modified the template for input csv file to include a `sample_name` column in addition to `sample` in-line with changes to [IRIDA-Next update] as seen with the [speciesabundance pipeline]
+  - `sample_name` special characters will be replaced with `"-"`
+  - If no `sample_name` is supplied in the column `sample` will be used
+  - To avoid repeat values for `sample_name` all `sample_name` values will be suffixed with the index of the `input` samplesheet.csv
 
 [IRIDA-Next update]: https://github.com/phac-nml/irida-next/pull/678
 [speciesabundance pipeline]: https://github.com/phac-nml/speciesabundance/pull/24
@@ -27,5 +27,4 @@ staramrnf follows the `nf-core` pipeline file structure and used the nf-core [te
 [pointfinder-db]: https://bitbucket.org/genomicepidemiology/pointfinder_db
 [plasmidfinder-db]: https://bitbucket.org/genomicepidemiology/plasmidfinder_db
 [resfinder-web]: http://genepi.food.dtu.dk/resfinder
-
 [0.1.0]: https://github.com/phac-nml/staramrnf/releases/tag/0.1.0

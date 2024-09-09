@@ -54,7 +54,22 @@ workflow STARAMR {
 
     // Create a new channel of metadata from a sample sheet
     // NB: `input` corresponds to `params.input` and associated sample sheet schema
+
     ch_input = Channel.fromSamplesheet("input")
+        .map { meta, contigs ->
+            // Set meta.id to meta.irida_id if sample_name is not provided in the samplesheet
+            if (!meta.id) {
+                meta.id = meta.irida_id
+            } else {
+                // Replace spaces in 'id' with underscores
+                meta.id = meta.id.replaceAll(/[^A-Za-z0-9_.\-]/, '_')
+            }
+            // Return the adjusted tuple
+            return [meta, contigs]
+        }.toList().flatMap { it.withIndex().collect{ entry, idx ->
+            entry[0].id = "${entry[0].id}_${idx}"
+            return [entry[0], entry[1]]}
+        }
 
     //
     // MODULE: StarAMR

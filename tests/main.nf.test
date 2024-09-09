@@ -62,22 +62,22 @@ nextflow_pipeline {
 
             // Check the commandline parameters
             // Salmonella
-            assert path("$baseDir/tests/results/staramr/GCA_000008105_results/GCA_000008105_settings.staramr.txt").exists()
-            def salmonella_settings = new File("$baseDir/tests/results/staramr/GCA_000008105_results/GCA_000008105_settings.staramr.txt")
+            assert path("$baseDir/tests/results/staramr/A_1__0_results/A_1__0_settings.staramr.txt").exists()
+            def salmonella_settings = new File("$baseDir/tests/results/staramr/A_1__0_results/A_1__0_settings.staramr.txt")
             def salmonella_cmd = salmonella_settings.readLines().get(0)
-            assert salmonella_cmd == "command_line                  = /usr/local/bin/staramr search --pointfinder-organism salmonella --minimum-contig-length 300 --genome-size-lower-bound 4000000 --genome-size-upper-bound 6000000 --minimum-N50-value 10000 --minimum-contig-length 300 --unacceptable-number-contigs 1000 --pid-threshold 98 --percent-length-overlap-plasmidfinder 60 --percent-length-overlap-resfinder 60 --percent-length-overlap-pointfinder 95 --nprocs 1 -o GCA_000008105_results GCA_000008105.fasta"
+            assert salmonella_cmd == "command_line                  = /usr/local/bin/staramr search --pointfinder-organism salmonella --minimum-contig-length 300 --genome-size-lower-bound 4000000 --genome-size-upper-bound 6000000 --minimum-N50-value 10000 --minimum-contig-length 300 --unacceptable-number-contigs 1000 --pid-threshold 98 --percent-length-overlap-plasmidfinder 60 --percent-length-overlap-resfinder 60 --percent-length-overlap-pointfinder 95 --nprocs 1 -o A_1__0_results A_1__0.fasta"
 
             // Ecoli
-            assert path("$baseDir/tests/results/staramr/GCA_000947975_results/GCA_000947975_settings.staramr.txt").exists()
-            def ecoli_settings = new File("$baseDir/tests/results/staramr/GCA_000947975_results/GCA_000947975_settings.staramr.txt")
+            assert path("$baseDir/tests/results/staramr/B2_1_results/B2_1_settings.staramr.txt").exists()
+            def ecoli_settings = new File("$baseDir/tests/results/staramr/B2_1_results/B2_1_settings.staramr.txt")
             def ecoli_cmd = ecoli_settings.readLines().get(0)
-            assert ecoli_cmd == "command_line                  = /usr/local/bin/staramr search --pointfinder-organism escherichia_coli --minimum-contig-length 300 --genome-size-lower-bound 4000000 --genome-size-upper-bound 6000000 --minimum-N50-value 10000 --minimum-contig-length 300 --unacceptable-number-contigs 1000 --pid-threshold 98 --percent-length-overlap-plasmidfinder 60 --percent-length-overlap-resfinder 60 --percent-length-overlap-pointfinder 95 --nprocs 1 -o GCA_000947975_results GCA_000947975.fasta"
+            assert ecoli_cmd == "command_line                  = /usr/local/bin/staramr search --pointfinder-organism escherichia_coli --minimum-contig-length 300 --genome-size-lower-bound 4000000 --genome-size-upper-bound 6000000 --minimum-N50-value 10000 --minimum-contig-length 300 --unacceptable-number-contigs 1000 --pid-threshold 98 --percent-length-overlap-plasmidfinder 60 --percent-length-overlap-resfinder 60 --percent-length-overlap-pointfinder 95 --nprocs 1 -o B2_1_results B2_1.fasta"
 
             // Listeria
-            assert path("$baseDir/tests/results/staramr/GCF_000196035_results/GCF_000196035_settings.staramr.txt").exists()
-            def listeria_settings = new File("$baseDir/tests/results/staramr/GCF_000196035_results/GCF_000196035_settings.staramr.txt")
+            assert path("$baseDir/tests/results/staramr/B2_2_results/B2_2_settings.staramr.txt").exists()
+            def listeria_settings = new File("$baseDir/tests/results/staramr/B2_2_results/B2_2_settings.staramr.txt")
             def listeria_cmd = listeria_settings.readLines().get(0)
-            assert listeria_cmd == "command_line                  = /usr/local/bin/staramr search --minimum-contig-length 300 --genome-size-lower-bound 4000000 --genome-size-upper-bound 6000000 --minimum-N50-value 10000 --minimum-contig-length 300 --unacceptable-number-contigs 1000 --pid-threshold 98 --percent-length-overlap-plasmidfinder 60 --percent-length-overlap-resfinder 60 --percent-length-overlap-pointfinder 95 --nprocs 1 -o GCF_000196035_results GCF_000196035.fasta"
+            assert listeria_cmd == "command_line                  = /usr/local/bin/staramr search --minimum-contig-length 300 --genome-size-lower-bound 4000000 --genome-size-upper-bound 6000000 --minimum-N50-value 10000 --minimum-contig-length 300 --unacceptable-number-contigs 1000 --pid-threshold 98 --percent-length-overlap-plasmidfinder 60 --percent-length-overlap-resfinder 60 --percent-length-overlap-pointfinder 95 --nprocs 1 -o B2_2_results B2_2.fasta"
 
             // Check CSVTK_concat output (merged_*) files
 
@@ -110,6 +110,13 @@ nextflow_pipeline {
             def actual_summary_tsv = path("$baseDir/tests/results/csvtk/merged_summary.staramr.tsv")
             def expected_summary_tsv = path("$baseDir/tests/data/merged_summary.tsv")
             assert actual_summary_tsv.readLines().sort() == expected_summary_tsv.readLines().sort()
+
+            // Check that Listeria, without a value in the sample_name column, runs by using the sample as the sample_name
+            assert path("$baseDir/tests/results/staramr/GCF_000196035_B_3_results/GCF_000196035_B_3_settings.staramr.txt").exists()
+            def sample_name_test = new File("$baseDir/tests/results/staramr/GCF_000196035_B_3_results/GCF_000196035_B_3_settings.staramr.txt")
+            def sample_name_test_cmd = sample_name_test.readLines().get(0)
+            assert sample_name_test_cmd == "command_line                  = /usr/local/bin/staramr search --minimum-contig-length 300 --genome-size-lower-bound 4000000 --genome-size-upper-bound 6000000 --minimum-N50-value 10000 --minimum-contig-length 300 --unacceptable-number-contigs 1000 --pid-threshold 98 --percent-length-overlap-plasmidfinder 60 --percent-length-overlap-resfinder 60 --percent-length-overlap-pointfinder 95 --nprocs 1 -o GCF_000196035_B_3_results GCF_000196035_B_3.fasta"
+
         }
 
     }

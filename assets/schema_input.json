@@ -10,8 +10,13 @@
             "sample": {
                 "type": "string",
                 "pattern": "^\\S+$",
-                "meta": ["id"],
+                "meta": ["irida_id"],
                 "errorMessage": "Sample name must be provided and cannot contain spaces"
+            },
+            "sample_name": {
+                "type": "string",
+                "meta": ["id"],
+                "errorMessage": "Sample name must be provided"
             },
             "contigs": {
                 "type": "string",

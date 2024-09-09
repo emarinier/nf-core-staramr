@@ -55,17 +55,20 @@ Note: The [parameter](#parameters) `--pointfinder_database` overrides the `speci
 A final samplesheet file consisting of `sample`, `contigs` and `species`.
 
 ```csv title="samplesheet.csv"
-sample,contigs,species
-SAMPLE1,sample1.fastq.gz,Salmonella
-SAMPLE2,sample2fastq.gz,Escherichia coli
-SAMPLE3,sample3.fastq.gz,
+sample,sample_name,contigs,species
+SAMPLE1,A1,sample1.fastq.gz,Salmonella
+SAMPLE2,A1,sample2fastq.gz,Escherichia coli
+SAMPLE3,,sample3.fastq.gz,
 ```
 
-| Column    | Description                                                                                          |
-| --------- | ---------------------------------------------------------------------------------------------------- |
-| `sample`  | Custom sample name. Samples should be unique within a samplesheet. **Required**                      |
-| `contigs` | Full path to genome contig(s). Uncompressed or gzipped (.gz) fasta file (fna,fa,fasta). **Required** |
-| `species` | Species of genome (see accepted Pointfinder organisms below). **Optional**                           |
+| Column        | Description                                                                                          |
+| ------------- | ---------------------------------------------------------------------------------------------------- |
+| `sample`      | Sample key. Samples should be unique within a samplesheet. **Required**                              |
+| `sample_name` | Sample name used in outputs (filenames and sample names)                                             |
+| `contigs`     | Full path to genome contig(s). Uncompressed or gzipped (.gz) fasta file (fna,fa,fasta). **Required** |
+| `species`     | Species of genome (see accepted Pointfinder organisms below). **Optional**                           |
+
+If `sample_name` value is left blank for a sample, then the `sample` value will replace the value. To ensure that all `sample_name` values are unique the samplesheet index is suffixed. Non-alphanumeric characters (and `_`,`-`,`.`) will be replaced with `"_"`.
 
 An [example samplesheet](assets/samplesheet.csv) has been provided with the pipeline.
 

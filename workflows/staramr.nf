@@ -52,6 +52,9 @@ include { CSVTK_CONCAT } from '../modules/local/csvtk/concat/main.nf'
 
 workflow STARAMR {
 
+    // Track processed IDs
+    def processedIDs = [] as Set
+
     // Create a new channel of metadata from a sample sheet
     // NB: `input` corresponds to `params.input` and associated sample sheet schema
 
@@ -66,11 +69,14 @@ workflow STARAMR {
                 // Replace spaces in 'id' with underscores
                 meta.id = meta.id.replaceAll(/[^A-Za-z0-9_.\-]/, '_')
             }
+            // Ensure ID is unique by appending meta.irida_id if needed
+            while (processedIDs.contains(meta.id)) {
+                meta.id = "${meta.id}_${meta.irida_id}"
+            }
+            // Add the ID to the set of processed IDs
+            processedIDs << meta.id
             // Return the adjusted tuple
             return [meta, contigs]
-        }.toList().flatMap { it.withIndex().collect{ entry, idx ->
-            entry[0].id = "${entry[0].id}_${idx}"
-            return [entry[0], entry[1]]}
         }
 
     //

@@ -32,7 +32,7 @@ SAMPLE3,,sample3.fastq.gz,
 | `contigs`     | Full path to genome contig(s). Uncompressed or gzipped (.gz) fasta file (fna,fa,fasta). **Required** |
 | `species`     | Species of genome (see accepted Pointfinder organisms below). **Optional**                           |
 
-If `sample_name` value is left blank for a sample, then the `sample` value will replace the value. To ensure that all `sample_name` values are unique the samplesheet index is suffixed. Non-alphanumeric characters (excluding `_`,`-`,`.`) will be replaced with `"_"`.
+If `sample_name` value is left blank for a sample, then the `sample` value will replace the value. To ensure that all `sample_name` values are unique, `sample` will be suffixed to `sample_name` that are not unique. Non-alphanumeric characters (excluding `_`,`-`,`.`) will be replaced with `"_"`.
 
 An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline.
 

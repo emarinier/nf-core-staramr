@@ -9,7 +9,7 @@
         "properties": {
             "sample": {
                 "type": "string",
-                "pattern": "^\\S+$",
+                "pattern": "^[A-Za-z0-9_.-]+$",
                 "meta": ["irida_id"],
                 "unique": true,
                 "errorMessage": "Sample name must be provided and cannot contain spaces"

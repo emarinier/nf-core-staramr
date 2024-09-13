@@ -60,8 +60,6 @@ workflow STARAMR {
 
     ch_input = Channel.fromSamplesheet("input")
         .map { meta, contigs ->
-            // Remove characters from meta.irida_id that could cause issues in processes
-            meta.irida_id = meta.irida_id.replaceAll(/[;\\#><|]/, '_')
             // Set meta.id to meta.irida_id if sample_name is not provided in the samplesheet
             if (!meta.id) {
                 meta.id = meta.irida_id

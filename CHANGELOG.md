@@ -5,15 +5,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Development
 
-### `Changed`
+## [0.1.1] - 2024-09-19
 
-- Modified the template for input csv file to include a `sample_name` column in addition to `sample` in-line with changes to [IRIDA-Next update] as seen with the [speciesabundance pipeline]
+The pipeline has been modified to accept an input (samplesheet) with an optional `sample_name` column. The goal of the `sample_name` is to allow for IRIDA-Next users to modify their output filenames and sample names. Previously, all files and samples were named using the IRIDA-Next ID (for which users do not chose). This modification will not impact the running locally of `staramrnf` because if `sample_name` column is absent (as was the case prior to the release) then the `sample` column will behave as it had previously.
   - `sample_name` special characters will be replaced with `"_"`
   - If no `sample_name` is supplied in the column `sample` will be used
   - To avoid repeat values for `sample_name` all `sample_name` values will be suffixed with the `sample` value. Which is a unique value.
-
-[IRIDA-Next update]: https://github.com/phac-nml/irida-next/pull/678
-[speciesabundance pipeline]: https://github.com/phac-nml/speciesabundance/pull/24
 
 ## [0.1.0] - 2024-08-14
 

@@ -45,11 +45,16 @@ process STARAMR_SEARCH {
         -o ${prefix}_results \\
         $genome_filename
 
+
     # Add prefix ($meta.id) to the names of output files (allows for CSVTK module to concatenate files downstream)
     for f in ${prefix}_results/* ; do mv "\$f" \$(echo \$f | sed 's;/;/${prefix}_;'); done
 
     # Add extension (.staramr) to the names of output files (to simplify output differntiation amongst other modules)
     for f in ${prefix}_results/*{.tsv,.xlsx,.txt} ; do mv "\$f" \$(echo \$f | sed 's;\\.\\([^\\.]*\\)\$;\\.staramr\\.\\1;'); done
+
+    # Add a meta.irida column to the *_summary.staramr.tsv file to allow for meta.irida to be passed to the iridanext.output.json.gz
+    awk 'BEGIN{ FS = OFS = "\\t" } { print (NR==1? "IRIDA_ID" : "${meta.irida_id}"), \$0 }' ${prefix}_results/${prefix}_summary.staramr.tsv > tmp && mv tmp ${prefix}_results/${prefix}_summary.staramr.tsv
+
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
